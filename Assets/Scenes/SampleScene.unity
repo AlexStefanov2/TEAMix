@@ -622,13 +622,9 @@ GameObject:
   - component: {fileID: 844991512}
   - component: {fileID: 844991511}
   - component: {fileID: 844991510}
-<<<<<<< HEAD
-  - component: {fileID: 844991513}
-=======
   - component: {fileID: 844991514}
   - component: {fileID: 844991513}
   - component: {fileID: 844991515}
->>>>>>> 79e24da5c1c922e0648ef76883acbea7841ec508
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -709,11 +705,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 844991509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 0c99d6fbbb9e3604582992dc83759a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
   m_Script: {fileID: 11500000, guid: 96444eb4b913628438a91e541d76baea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -751,7 +742,6 @@ MonoBehaviour:
   enemy1: {fileID: 1357374680}
   enemy2: {fileID: 1674018023}
   enemy3: {fileID: 1775190545}
->>>>>>> 79e24da5c1c922e0648ef76883acbea7841ec508
 --- !u!1 &851520824
 GameObject:
   m_ObjectHideFlags: 0
