@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: PassButton
+  button: {fileID: 1810649971}
 --- !u!114 &844991518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: DefendButton
+  button: {fileID: 626591306}
 --- !u!114 &844991519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: AttackButton
+  button: {fileID: 144750905}
 --- !u!114 &844991520
 MonoBehaviour:
   m_ObjectHideFlags: 0

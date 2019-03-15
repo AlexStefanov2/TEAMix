@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonVisibility : MonoBehaviour
 {
-    public string buttonName;
+    public Button button;
 
     void Update()
     {
         Debug.Log("is updating!");
-        GameObject.Find(buttonName).SetActive(TurnController.isPlayerTurn);
+        button.gameObject.SetActive(TurnController.isPlayerTurn);
     }
 }
  
