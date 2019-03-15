@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\QuitScript.cs" />
      <Compile Include="Assets\Scripts\TurnController.cs" />
+     <None Include="Assets\Colorful Buttons\Credits.txt" />
      <None Include="Assets\ColorfulButtons\Credits.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>D:/Desktop/TEAMix/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
