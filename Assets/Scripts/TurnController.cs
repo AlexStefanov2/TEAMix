@@ -18,10 +18,10 @@ public class TurnController : MonoBehaviour
     {
         isPlayerTurn = false;
         if (PlayerController.playerAttack > 0) {
-            PlayerController.playerAttack = showTask(PlayerController.playerAttack);
+            ChemistryController.GiveTask(PlayerController.playerAttack);
         }
         if (PlayerController.playerDefence > 0) {
-            PlayerController.playerDefence = showTask(PlayerController.playerDefence);
+            ChemistryController.GiveTask(PlayerController.playerDefence);
         }
         EnemyController.TakeDamage();
         EnemyController.ShiftEnemies();
@@ -45,12 +45,6 @@ public class TurnController : MonoBehaviour
         PlayerController.playerAttack = 0;
         DebugPrint();
         isPlayerTurn = true;
-    }
-
-    static int showTask(int difficulty)
-    {
-        
-        return 9999999;
     }
 
     static void DebugPrint()
