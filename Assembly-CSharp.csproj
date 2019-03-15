@@ -53,10 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ButtonVisibility.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
-     <Compile Include="Assets\Scripts\EnemyInterface.cs" />
+     <Compile Include="Assets\Scripts\EnemyUnit.cs" />
+     <Compile Include="Assets\Scripts\LabelUpdate.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\TextUpdate.cs" />
+     <Compile Include="Assets\Scripts\TurnController.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>D:/Desktop/Reaction/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
