@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LabelUpdate : MonoBehaviour
 {
+    public Text bigLabel;
     public Text playerAP;
     public Text playerHP;
     public Text enemyAP;
@@ -18,6 +19,7 @@ public class LabelUpdate : MonoBehaviour
 
     void Update()
     {
+        bigLabel.text = TurnController.bigLabelStatus;
         playerAP.text = "AP: " + PlayerController.playerAP.ToString();
         playerHP.text = "HP: " + PlayerController.playerHealth.ToString();
         enemyAP.text = "AP: " + EnemyController.enemyAP.ToString();
