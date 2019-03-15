@@ -190,7 +190,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 86478727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 844991516}
+        m_MethodName: ChooseAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &86478727
@@ -242,7 +253,6 @@ GameObject:
   - component: {fileID: 144750904}
   - component: {fileID: 144750903}
   - component: {fileID: 144750905}
-  - component: {fileID: 144750902}
   m_Layer: 5
   m_Name: AttackButton
   m_TagString: Untagged
@@ -269,19 +279,6 @@ RectTransform:
   m_AnchoredPosition: {x: -260, y: 20}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &144750902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144750900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonName: AttackButton
 --- !u!114 &144750903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +485,6 @@ GameObject:
   - component: {fileID: 626591305}
   - component: {fileID: 626591304}
   - component: {fileID: 626591306}
-  - component: {fileID: 626591303}
   m_Layer: 5
   m_Name: DefendButton
   m_TagString: Untagged
@@ -515,19 +511,6 @@ RectTransform:
   m_AnchoredPosition: {x: -180, y: 20}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &626591303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626591301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonName: DefendButton
 --- !u!114 &626591304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +668,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 655701604}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 844991516}
+        m_MethodName: ChooseAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &655701604
@@ -929,6 +923,9 @@ GameObject:
   - component: {fileID: 844991513}
   - component: {fileID: 844991515}
   - component: {fileID: 844991516}
+  - component: {fileID: 844991519}
+  - component: {fileID: 844991518}
+  - component: {fileID: 844991517}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1068,6 +1065,45 @@ MonoBehaviour:
   text2: {fileID: 1630375924}
   text3: {fileID: 2120321170}
   text4: {fileID: 1661006416}
+--- !u!114 &844991517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844991509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonName: PassButton
+--- !u!114 &844991518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844991509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonName: DefendButton
+--- !u!114 &844991519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844991509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonName: AttackButton
 --- !u!1 &851520824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1290,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 890475077}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 844991516}
+        m_MethodName: ChooseAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &890475077
@@ -1372,7 +1419,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 960784053}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 844991516}
+        m_MethodName: ChooseAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &960784053
@@ -2438,7 +2496,6 @@ GameObject:
   - component: {fileID: 1810649974}
   - component: {fileID: 1810649972}
   - component: {fileID: 1810649971}
-  - component: {fileID: 1810649973}
   m_Layer: 5
   m_Name: PassButton
   m_TagString: Untagged
@@ -2517,19 +2574,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &1810649973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810649970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6df167dac091d48a391fed668923fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonName: PassButton
 --- !u!222 &1810649974
 CanvasRenderer:
   m_ObjectHideFlags: 0

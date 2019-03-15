@@ -95,18 +95,19 @@ public class ChemistryController : MonoBehaviour
         } else {
             formulaField.color = new Color(0f, 1f, 0f, 1f);
         }
-        StartCoroutine(Wait());
-        isDone = true;
-        
-    }
+        StartCoroutine(WaitAndHide());
 
-    IEnumerator Wait()
+    }
+    IEnumerator WaitAndHide()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
+        isShown = false;
+        formulaField.color = new Color(0f, 0f, 0f, 1f);
+        TurnController.stage++;
+        TurnController.CycleTurns();
     }
 
     public static bool isShown = false;
-    public static bool isDone = false;
     static Quiz chosenQuiz;
     static int varIndex;
     public static void GiveTask(int var)
@@ -114,7 +115,5 @@ public class ChemistryController : MonoBehaviour
         varIndex = var;
         isShown = true;
         chosenQuiz = database[Random.Range(0, database.Length-1)];
-        isDone = false;
-        while (!isDone) {}
     }
 }
