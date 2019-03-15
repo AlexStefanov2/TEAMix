@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using Button = UnityEngine.UI.Button;
 
 public class MusicControl : MonoBehaviour
 {
     public bool isMusicPlaying = true;
-    public Button button;
-    public AudioMixer musicMixer;
-    void Start() => button.Onclick().AddListener(TaskOnClick);
-    // Update is called once per frame
-    public void Update()
+    public Button musicButton;
+    void Start()
     {
-        
-        void TaskOnClick()
-        {
-                AudioListener.pause = !AudioListener.pause;
-        }
+        UnityEngine.UI.Button btn = musicButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
     }
+    // Update is called once per frame
+    void TaskOnClick()
+    {
+        AudioListener.pause = !AudioListener.pause;
+    }
+   
 }

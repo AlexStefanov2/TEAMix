@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\MenuSceneChanger.cs" />
     <Compile Include="Assets\Scripts\MusicControl.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\QuitScript.cs" />
     <Compile Include="Assets\Scripts\TurnController.cs" />
     <None Include="Assets\ColorfulButtons\Credits.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
