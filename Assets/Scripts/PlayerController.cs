@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public static int playerHealth = 10;
     public static int playerAttack = 0;
-    public static int playerDefense = 0;
+    public static int playerDefence = 0;
     public static int playerAP = 1;
     public static int playerPassedAP = 0;
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Defend!");
         playerAP--;
-        playerDefense++;
+        playerDefence++;
         CheckIfTurnEnds();
     }
 

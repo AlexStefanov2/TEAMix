@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurnController : MonoBehaviour
 {
+    public static string bigLabelStatus = "";
+
     public static bool isPlayerTurn = true;
     static int turnCount = 1;
 
@@ -20,11 +22,13 @@ public class TurnController : MonoBehaviour
         EnemyController.CalculateDamage();
         if (EnemyController.enemyCount == 0) {
             Debug.Log ("YOU WIN!");
+            bigLabelStatus = "YOU WIN!";
             return;
         }
         EnemyController.ShiftEnemies();
         if (PlayerController.playerHealth <= 0) {
             Debug.Log ("YOU LOSE.");
+            bigLabelStatus = "YOU LOSE.";
             return;
         }
         turnCount++;
