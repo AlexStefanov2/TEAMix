@@ -17,10 +17,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // subscribe to 3 button events
-        AttackButton.onClick.AddListener(AttackPress);
-        DefendButton.onClick.AddListener(DefendPress);
-        PassButton.onClick.AddListener(PassPress);
+         AttackButton.onClick.AddListener(AttackPress);
+         DefendButton.onClick.AddListener(DefendPress);
+         PassButton.onClick.AddListener(PassPress);
     }
 
     static void AttackPress()
@@ -51,9 +50,11 @@ public class PlayerController : MonoBehaviour
     {
         if (playerAP <= 0) {
             playerAP = playerPassedAP;
+            playerPassedAP = 0;
             TurnController.CycleTurns();
         }
     }
+
 
     public static void DebugPrint()
     {

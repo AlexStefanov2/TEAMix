@@ -16,18 +16,32 @@ public class EnemyUnit : MonoBehaviour
     void Start()
     {
         EnemyController.ToShift += Shift;
-        EnemyController.ToFight += Fight;
+        EnemyController.ToDealDamage += DealDamage;
+        EnemyController.ToTakeDamage += TakeDamage;
         EnemyController.ToUseAP += UseAP;
         EnemyController.ToDebug += DebugPrint;
     }
 
+    bool hasDefended = false;
     void UseAP()
     {
-        // Primitive AI (always attacks with all of its AP):
         if (order != 0) {
             return;
         }
+        defence = 0;
+        attack = 0;
+        /* // Primitive AI (always attacks with all of its AP):
         attack = EnemyController.enemyAP;
+        EnemyController.enemyAP = 0;
+        */
+
+        // Not So primitive AI (alternates full defence and full attack)
+        if (hasDefended) {
+            attack = EnemyController.enemyAP;
+        } else {
+            defence = EnemyController.enemyAP;
+        }
+        hasDefended = !hasDefended;
         EnemyController.enemyAP = 0;
     }
 
@@ -37,29 +51,30 @@ public class EnemyUnit : MonoBehaviour
         if (order < 0) {
             order = EnemyController.enemyCount - 1;
         }
-        // shift enemy appearance on screen (along with its HP tag)
+        // to shift enemy appearance on screen (along with its HP tag)
     }
 
-// Calculations done here for both the player and the unit.
-    void Fight()
+    void DealDamage()
     {
         if (order != 0) {
             return;
         }
+        if (attack > PlayerController.playerDefence) {
+            PlayerController.playerHealth -= (attack - PlayerController.playerDefence);
+        }
+    }
 
+    void TakeDamage()
+    {
+        if (order != 0) {
+            return;
+        }
         if (PlayerController.playerAttack > defence) {
             health -= (PlayerController.playerAttack - defence);
         }
         if (health <= 0) {
             Die();
-        } else if (attack > PlayerController.playerDefence) {
-            PlayerController.playerHealth -= (attack - PlayerController.playerDefence);
         }
-
-        PlayerController.playerAttack = 0;
-        PlayerController.playerDefence = 0;
-        attack = 0;
-        defence = 0;
     }
 
     void Die()
@@ -67,10 +82,11 @@ public class EnemyUnit : MonoBehaviour
         isDead = true;
         EnemyController.enemyCount--;
         EnemyController.ToShift -= Shift;
-        EnemyController.ToFight -= Fight;
+        EnemyController.ToDealDamage -= DealDamage;
+        EnemyController.ToTakeDamage -= TakeDamage;
         EnemyController.ToUseAP -= UseAP;
         EnemyController.ToDebug -= DebugPrint;
-        order = -10;
+        order = -999;
     }
 
     void DebugPrint()

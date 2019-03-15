@@ -16,12 +16,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public delegate void FightAction();
-    public static event FightAction ToFight;
-    public static void CalculateDamage()
+    public delegate void DealDamageAction();
+    public static event DealDamageAction ToDealDamage;
+    public static void DealDamage()
     {
-        if (ToFight != null) {
-            ToFight();
+        if (ToDealDamage != null) {
+            ToDealDamage();
         }
     }
 
@@ -31,6 +31,15 @@ public class EnemyController : MonoBehaviour
     {
         if (ToUseAP != null) {
             ToUseAP();
+        }
+    }
+    
+    public delegate void TakeDamageAction();
+    public static event TakeDamageAction ToTakeDamage;
+    public static void TakeDamage()
+    {
+        if (ToTakeDamage != null) {
+            ToTakeDamage();
         }
     }
 
@@ -43,4 +52,5 @@ public class EnemyController : MonoBehaviour
             Debug.Log(string.Format("Enemy AP: {0}", enemyAP));
         }
     }
+
 }
