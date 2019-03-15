@@ -17,9 +17,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        AttackButton.onClick.AddListener(AttackPress);
-        DefendButton.onClick.AddListener(DefendPress);
-        PassButton.onClick.AddListener(PassPress);
+         AttackButton.onClick.AddListener(AttackPress);
+         DefendButton.onClick.AddListener(DefendPress);
+         PassButton.onClick.AddListener(PassPress);
     }
 
     static void AttackPress()
