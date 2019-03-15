@@ -17,15 +17,17 @@ public class TurnController : MonoBehaviour
     public static void CycleTurns()
     {
         isPlayerTurn = false;
+        EnemyController.TakeDamage();
+        EnemyController.ShiftEnemies();
         EnemyController.enemyAP += turnCount;
         EnemyController.UseAP();
-        EnemyController.CalculateDamage();
+        EnemyController.DealDamage();
         if (EnemyController.enemyCount == 0) {
             Debug.Log ("YOU WIN!");
             bigLabelStatus = "YOU WIN!";
             return;
         }
-        EnemyController.ShiftEnemies();
+
         if (PlayerController.playerHealth <= 0) {
             Debug.Log ("YOU LOSE.");
             bigLabelStatus = "YOU LOSE.";
@@ -33,7 +35,8 @@ public class TurnController : MonoBehaviour
         }
         turnCount++;
         PlayerController.playerAP += turnCount;
-        PlayerController.playerPassedAP = 0;
+        PlayerController.playerDefence = 0;
+        PlayerController.playerAttack = 0;
         DebugPrint();
         isPlayerTurn = true;
     }
