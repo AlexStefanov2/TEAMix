@@ -95,7 +95,14 @@ public class ChemistryController : MonoBehaviour
         } else {
             formulaField.color = new Color(0f, 1f, 0f, 1f);
         }
+        StartCoroutine(Wait());
         isDone = true;
+        
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
     }
 
     public static bool isShown = false;
@@ -109,6 +116,5 @@ public class ChemistryController : MonoBehaviour
         chosenQuiz = database[Random.Range(0, database.Length-1)];
         isDone = false;
         while (!isDone) {}
-        WaitForSeconds(1);
     }
 }

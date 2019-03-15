@@ -148,11 +148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -120, y: -20}
-=======
-  m_AnchoredPosition: {x: -30, y: 0}
->>>>>>> 8a21ae4a642b6e623bbab002f71b236c36cfec30
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &86478726
@@ -647,11 +643,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -40, y: -20}
-=======
-  m_AnchoredPosition: {x: 51.8, y: 0}
->>>>>>> 8a21ae4a642b6e623bbab002f71b236c36cfec30
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655701603
@@ -1067,15 +1059,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 1916587731}
-  formulaField: {fileID: 0}
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
-  button4: {fileID: 0}
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  text3: {fileID: 0}
-  text4: {fileID: 0}
+  formulaField: {fileID: 1254866717}
+  button1: {fileID: 86478726}
+  button2: {fileID: 655701603}
+  button3: {fileID: 890475076}
+  button4: {fileID: 960784052}
+  text1: {fileID: 1828098392}
+  text2: {fileID: 1630375924}
+  text3: {fileID: 2120321170}
+  text4: {fileID: 1661006416}
 --- !u!1 &851520824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,11 +1212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 40, y: -20}
-=======
-  m_AnchoredPosition: {x: 127.3, y: 0}
->>>>>>> 8a21ae4a642b6e623bbab002f71b236c36cfec30
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890475076
@@ -1342,11 +1330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 120, y: -20}
-=======
-  m_AnchoredPosition: {x: -129.1, y: 0}
->>>>>>> 8a21ae4a642b6e623bbab002f71b236c36cfec30
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960784052
@@ -2918,7 +2902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.6, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120321170
