@@ -9,7 +9,7 @@ public class EnemyUnit : MonoBehaviour
  
     int health = 10;
     int attack = 0;
-    int defense = 0;
+    int defence = 0;
 
 
     void Start()
@@ -46,19 +46,19 @@ public class EnemyUnit : MonoBehaviour
             return;
         }
 
-        if (PlayerController.playerAttack > defense) {
-            health -= (PlayerController.playerAttack - defense);
+        if (PlayerController.playerAttack > defence) {
+            health -= (PlayerController.playerAttack - defence);
         }
         if (health <= 0) {
             Die();
-        } else if (attack > PlayerController.playerDefense) {
-            PlayerController.playerHealth -= (attack - PlayerController.playerDefense);
+        } else if (attack > PlayerController.playerDefence) {
+            PlayerController.playerHealth -= (attack - PlayerController.playerDefence);
         }
 
         PlayerController.playerAttack = 0;
-        PlayerController.playerDefense = 0;
+        PlayerController.playerDefence = 0;
         attack = 0;
-        defense = 0;
+        defence = 0;
     }
 
     void Die()
