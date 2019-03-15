@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 public class EnemyUnit : MonoBehaviour
 {
     public int order;
+    public bool isDead = false;
  
-    int health = 10;
+    public int health = 10;
     int attack = 0;
     int defence = 0;
 
@@ -63,6 +64,7 @@ public class EnemyUnit : MonoBehaviour
 
     void Die()
     {
+        isDead = true;
         EnemyController.enemyCount--;
         EnemyController.ToShift -= Shift;
         EnemyController.ToFight -= Fight;
