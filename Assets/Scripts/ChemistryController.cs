@@ -39,13 +39,44 @@ public class ChemistryController : MonoBehaviour
             this.correctAnswer = correctAnswer;
         }
     }
-    static Quiz[] database = {
-        new Quiz("__ + O₂ = 2H₂O", "H₂", "2H", "2H₂", "4H", 3),
-        new Quiz("2Na + Cl₂ = __", "2NaCl", "NaCl", "Na₂Cl₂", "2Na₂Cl", 1),
-        new Quiz("2Na + 2H₂O = __ + H₂", "NaOH", "2NaOH", "2NaO", "H₂O", 2),
-        new Quiz("__ + O₂ = 2Na₂O", "Na", "2Na", "3Na", "4Na", 4),
-        new Quiz("H₂ + F₂ = __", "HF", "2HF", "H₂F₂", "F₂H₂", 2),
-        new Quiz("H₂ + O₂ = __", "2HO", "H₂O", "H₂O₂", "HO", 3),
+/*
+EASY
+
+new Quiz("__ + O₂ -> 2H₂O", "H₂", "2H", "2H₂", "4H", 3),
+new Quiz("2Na + Cl₂ -> __", "2NaCl", "NaCl", "Na₂Cl₂", "2Na₂Cl", 1),
+new Quiz("2Na + 2H₂O -> __ + H₂", "NaOH", "2NaOH", "2NaO", "H₂O", 2),
+new Quiz("__ + O₂ -> 2Na₂O", "Na", "2Na", "3Na", "4Na", 4),
+new Quiz("H₂ + F₂ -> __", "HF", "2HF", "H₂F₂", "F₂H₂", 2),
+new Quiz("H₂ + O₂ -> __", "2HO", "H₂O", "H₂O₂", "HO", 3),
+new Quiz("N₂ + 3H₂ -> __", "6H + 2N", "2NH₃", "H₂N₂", "6HN", 2),
+
+HARD
+
+new Quiz("2H₂S + SO₂ -> 3S+ __", "2HO", "2H₂O", "H₂O₂", "4H + 2O", 2),
+new Quiz("CH₃COOC₂H₅ + 3H₂ -> CH₃COO + H+ __", "6H + 2N + 3O", "2NH₃", "C₂H₅OH", "6HCOO", 3),
+new Quiz("2Mg + O₂ -> __", "2MG + 2O", "MgO", "Mg₂O₂", "2MgO", 4),
+new Quiz("H₂SO₄ -> 2H + __", "SO₄", "S + O₄", "S2O₂", "2SO", 1),
+new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Ag", "Ag + Cl", "AgCl", "Cl", 3),
+new Quiz("Ca(OH)₃ -> Al + __", "3OH", "3(OH)", "3O + 3H", "COH", 2),
+new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
+*/
+    static Quiz[] databaseEasy = {
+        new Quiz("__ + O₂ -> 2H₂O", "H₂", "2H", "2H₂", "4H", 3),
+        new Quiz("2Na + Cl₂ -> __", "2NaCl", "NaCl", "Na₂Cl₂", "2Na₂Cl", 1),
+        new Quiz("2Na + 2H₂O -> __ + H₂", "NaOH", "2NaOH", "2NaO", "H₂O", 2),
+        new Quiz("__ + O₂ -> 2Na₂O", "Na", "2Na", "3Na", "4Na", 4),
+        new Quiz("H₂ + F₂ -> __", "HF", "2HF", "H₂F₂", "F₂H₂", 2),
+        new Quiz("H₂ + O₂ -> __", "2HO", "H₂O", "H₂O₂", "HO", 3),
+        new Quiz("N₂ + 3H₂ -> __", "6H + 2N", "2NH₃", "H₂N₂", "6HN", 2),
+    };
+    static Quiz[] databaseHard = {
+        new Quiz("2H₂S + SO₂ -> 3S+ __", "2HO", "2H₂O", "H₂O₂", "4H + 2O", 2),
+        new Quiz("CH₃COOC₂H₅ + 3H₂ -> CH₃COO + H+ __", "6H + 2N + 3O", "2NH₃", "C₂H₅OH", "6HCOO", 3),
+        new Quiz("2Mg + O₂ -> __", "2MG + 2O", "MgO", "Mg₂O₂", "2MgO", 4),
+        new Quiz("H₂SO₄ -> 2H + __", "SO₄", "S + O₄", "S2O₂", "2SO", 1),
+        new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Ag", "Ag + Cl", "AgCl", "Cl", 3),
+        new Quiz("Al(OH)₃ -> Al + __", "3OH", "3(OH)", "3O + 3H", "COH", 2),
+        new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
     };
     
     bool lastShownStatus = !isShown;
@@ -121,6 +152,12 @@ public class ChemistryController : MonoBehaviour
     {
         varIndex = var;
         isShown = true;
-        chosenQuiz = database[Random.Range(0, database.Length-1)];
+        float percent = Random.Range(0, 9);
+        if (percent >= ((ChemistryController.multiplier-1) * 10)){
+            chosenQuiz = databaseEasy[Random.Range(0, databaseEasy.Length-1)];
+        } else {
+            chosenQuiz = databaseHard[Random.Range(0, databaseHard.Length-1)];
+        }
+        
     }
 }
