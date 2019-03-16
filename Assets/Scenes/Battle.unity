@@ -556,7 +556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320.00003, y: 0}
+  m_AnchoredPosition: {x: 340, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497935467
@@ -1745,7 +1745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320.00003, y: 120}
+  m_AnchoredPosition: {x: 340, y: 120}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1124048789
@@ -2641,6 +2641,7 @@ MonoBehaviour:
   isDead: 0
   health: 10
   enemy: {fileID: 1357374679}
+  enemyHPTag: {fileID: 1124048788}
 --- !u!1 &1487099701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,6 +3173,7 @@ MonoBehaviour:
   isDead: 0
   health: 10
   enemy: {fileID: 1674018022}
+  enemyHPTag: {fileID: 497935466}
 --- !u!1 &1703391308
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,6 +3399,7 @@ MonoBehaviour:
   isDead: 0
   health: 10
   enemy: {fileID: 1775190544}
+  enemyHPTag: {fileID: 2016951296}
 --- !u!1 &1810649970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,7 +3875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 313.7203, y: -124.40729}
+  m_AnchoredPosition: {x: 340, y: -124.40729}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016951297

@@ -14,6 +14,7 @@ public class EnemyUnit : MonoBehaviour
     int defence = 0;
 
     public Transform enemy;
+    public Transform enemyHPTag;
 
 
     void Start()
@@ -23,26 +24,34 @@ public class EnemyUnit : MonoBehaviour
         EnemyController.ToTakeDamage += TakeDamage;
         EnemyController.ToUseAP += UseAP;
         EnemyController.ToDebug += DebugPrint;
-        start = enemy.position;
-        end = start;
+        enemyStart = enemy.position;
+        enemyEnd = enemyStart;
+        tagStart = enemyHPTag.position;
+        tagEnd = tagStart;
     }
 
     float t = 0;
-    Vector2 start;
-    Vector2 end;
-    float transitionLength;
+    Vector2 enemyStart;
+    Vector2 enemyEnd;
+    Vector2 tagStart;
+    Vector2 tagEnd;
+    float transitionLength = 0.5f;
     void UpdateScreenPosition()
     {
-        start = enemy.position;
-        end = start;
-        end.y = (-2*order)+2;
+        enemyStart = enemy.position;
+        enemyEnd = enemyStart;
+        enemyEnd.y = (-2*order)+2;
+        tagStart = enemyHPTag.position;
+        tagEnd = tagStart;
+        tagEnd.y = (-2*order)+2;
         t = 0;
     }
 
     void Update()
     {
-        t += Time.deltaTime;
-        enemy.position = Vector2.Lerp(start, end, t);
+        t += Time.deltaTime / transitionLength;
+        enemy.position = Vector2.Lerp(enemyStart, enemyEnd, t);
+        enemyHPTag.position = Vector2.Lerp(tagStart, tagEnd, t);
     }
 
     bool hasDefended = false;
