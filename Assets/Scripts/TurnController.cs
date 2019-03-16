@@ -34,7 +34,8 @@ public class TurnController : MonoBehaviour
     public static bool hasWon;
     public static bool hasLost;
     public static bool toEnemySwipe = false;
-    int temp;
+    public static int enemyHasAttacked = 0;
+    public static int enemyHasDefended = 0;
     IEnumerator Waitable()
     {
         if (stage == 0) {
@@ -58,6 +59,10 @@ public class TurnController : MonoBehaviour
             }
         }
         if (stage == 2) {
+            if (PlayerController.playerDefence > 0) {
+                swiper.EnableLeftShield();
+                yield return new WaitForSeconds(1.5f);
+            }
             EnemyController.TakeDamage();
             yield return new WaitForSeconds(0.5f);
             EnemyController.ShiftEnemies();
@@ -70,10 +75,13 @@ public class TurnController : MonoBehaviour
                 EnemyController.enemyAP += turnCount;
                 yield return new WaitForSeconds(0.5f);
                 EnemyController.UseAP();
+                if (enemyHasDefended > 0) {
+                    swiper.EnableRightShield();
+                    yield return new WaitForSeconds(1.5f);
+                }
                 yield return new WaitForSeconds(0.5f);
-                temp = PlayerController.playerHealth;
                 EnemyController.DealDamage();
-                if (PlayerController.playerHealth != temp) {
+                if (enemyHasAttacked > 0) {
                     swiper.EnableLeftSwipe();
                     yield return new WaitForSeconds(1);
                     swiper.DisableLeftSwipe();

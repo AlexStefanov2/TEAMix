@@ -8,6 +8,8 @@ public class EffectController : MonoBehaviour
     public ParticleSystem rightSwipe2;
     public ParticleSystem leftSwipe1;
     public ParticleSystem leftSwipe2;
+    public ParticleSystem rightShield;
+    public ParticleSystem leftShield;
 
     public void EnableRightSwipe()
     {
@@ -28,5 +30,13 @@ public class EffectController : MonoBehaviour
     {
         leftSwipe1.Pause();
         leftSwipe2.Pause();
+    }
+    public void EnableRightShield()
+    {
+        rightShield.Play();
+    }
+    public void EnableLeftShield()
+    {
+        leftShield.Play();
     }
 }

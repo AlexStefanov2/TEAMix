@@ -153,6 +153,8 @@ public class EnemyUnit : MonoBehaviour
     public Text defenceTag;
     void showChoices()
     {
+        TurnController.enemyHasAttacked = attack;
+        TurnController.enemyHasDefended = defence;
         attackTag.text = string.Format("Att: {0}", attack.ToString());
         defenceTag.text = string.Format("Def: {0}", defence.ToString());
     }
