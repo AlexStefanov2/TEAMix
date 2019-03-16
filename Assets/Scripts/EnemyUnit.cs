@@ -12,6 +12,8 @@ public class EnemyUnit : MonoBehaviour
     int attack = 0;
     int defence = 0;
 
+    public Transform enemy;
+
 
     void Start()
     {
@@ -20,6 +22,26 @@ public class EnemyUnit : MonoBehaviour
         EnemyController.ToTakeDamage += TakeDamage;
         EnemyController.ToUseAP += UseAP;
         EnemyController.ToDebug += DebugPrint;
+        start = enemy.position;
+        end = start;
+    }
+
+    float t = 0;
+    Vector2 start;
+    Vector2 end;
+    float transitionLength;
+    void UpdateScreenPosition()
+    {
+        start = enemy.position;
+        end = start;
+        end.y = (-2*order)+2;
+        t = 0;
+    }
+
+    void Update()
+    {
+        t += Time.deltaTime;
+        enemy.position = Vector2.Lerp(start, end, t);
     }
 
     bool hasDefended = false;
@@ -51,7 +73,7 @@ public class EnemyUnit : MonoBehaviour
         if (order < 0) {
             order = EnemyController.enemyCount - 1;
         }
-        // to shift enemy appearance on screen (along with its HP tag)
+        UpdateScreenPosition();
     }
 
     void DealDamage()
@@ -86,8 +108,10 @@ public class EnemyUnit : MonoBehaviour
         EnemyController.ToTakeDamage -= TakeDamage;
         EnemyController.ToUseAP -= UseAP;
         EnemyController.ToDebug -= DebugPrint;
-        order = -999;
+        order = -9;
+        UpdateScreenPosition();
     }
+
 
     void DebugPrint()
     {

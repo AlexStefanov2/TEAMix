@@ -9,7 +9,6 @@ public class ButtonVisibility : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("is updating!");
         button.gameObject.SetActive(TurnController.isPlayerTurn);
     }
 }

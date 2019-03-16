@@ -10,8 +10,7 @@ public class MusicControl : MonoBehaviour
     public Button musicButton;
     void Start()
     {
-        UnityEngine.UI.Button btn = musicButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        musicButton.onClick.AddListener(TaskOnClick);
     }
     // Update is called once per frame
     void TaskOnClick()

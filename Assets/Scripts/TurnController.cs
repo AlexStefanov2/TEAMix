@@ -55,7 +55,6 @@ public class TurnController : MonoBehaviour
             PlayerController.playerDefence = 0;
             PlayerController.playerAttack = 0;
             DebugPrint();
-            Debug.Log("will enable buttons!");
             isPlayerTurn = true;
             
             stage = 0;
