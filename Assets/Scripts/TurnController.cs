@@ -9,6 +9,8 @@ public class TurnController : MonoBehaviour
     public static bool isPlayerTurn = true;
     public static int turnCount = 1;
 
+    public SwipeController swiper;
+
     void Start()
     {
         Debug.Log("Debug Console Active");
@@ -31,6 +33,7 @@ public class TurnController : MonoBehaviour
 
     public static bool hasWon;
     public static bool hasLost;
+    public static bool toEnemySwipe = false;
     IEnumerator Waitable()
     {
         if (stage == 0) {
@@ -42,6 +45,11 @@ public class TurnController : MonoBehaviour
             }
         }
         if (stage == 1) {
+            if (PlayerController.playerAttack > 0) {
+                swiper.EnableEnemySwipe();
+                yield return new WaitForSeconds(1);
+                swiper.DisableEnemySwipe();
+            }
             if (PlayerController.playerDefence > 0) {
             ChemistryController.GiveTask(1);
             } else {
@@ -49,7 +57,6 @@ public class TurnController : MonoBehaviour
             }
         }
         if (stage == 2) {
-            yield return new WaitForSeconds(0.5f);
             EnemyController.TakeDamage();
             yield return new WaitForSeconds(0.5f);
             EnemyController.ShiftEnemies();

@@ -17,6 +17,7 @@ public class EnemyUnit : MonoBehaviour
     public Transform enemyHPTag;
 
 
+
     void Start()
     {
         EnemyController.ToShift += Shift;
@@ -142,6 +143,13 @@ public class EnemyUnit : MonoBehaviour
             }
             EnemyController.enemyAP = APToPass;
         }
+
+        showChoices();
+    }
+
+    void showChoices()
+    {
+        // display enemy attack and defence
     }
 
     void Shift()
