@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EnemyUnit.cs" />
     <Compile Include="Assets\Scripts\LabelUpdate.cs" />
+    <Compile Include="Assets\Scripts\MenuPopUp.cs" />
     <Compile Include="Assets\Scripts\MenuSceneChanger.cs" />
     <Compile Include="Assets\Scripts\MusicControl.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
