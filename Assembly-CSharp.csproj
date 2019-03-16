@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonVisibility.cs" />
     <Compile Include="Assets\Scripts\ChemistryController.cs" />
+    <Compile Include="Assets\Scripts\CloseMenuScript.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EnemyUnit.cs" />
     <Compile Include="Assets\Scripts\LabelUpdate.cs" />
