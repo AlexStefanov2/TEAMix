@@ -18,7 +18,7 @@ public class ChemistryController : MonoBehaviour
     public Text text4;
 
 
-    public static float multiplier = 1.0f;
+    public static int multiplier = 0;
 
     struct Quiz
     {
@@ -128,10 +128,10 @@ new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
             } else if (varIndex == 1) { // defence
                 PlayerController.playerDefence /= 2;
             }
-            multiplier = 1.0f;
+            multiplier = 0;
         } else {
             formulaField.color = new Color(0f, 1f, 0f, 1f);
-            multiplier += 0.1f;
+            multiplier += 1;
         }
         StartCoroutine(WaitAndHide());
 
@@ -152,8 +152,8 @@ new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
     {
         varIndex = var;
         isShown = true;
-        float percent = Random.Range(0, 9);
-        if (percent >= ((ChemistryController.multiplier-1) * 10)){
+        int percent = Random.Range(0, 9);
+        if (percent >= ChemistryController.multiplier){
             chosenQuiz = databaseEasy[Random.Range(0, databaseEasy.Length-1)];
         } else {
             chosenQuiz = databaseHard[Random.Range(0, databaseHard.Length-1)];

@@ -306,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210, y: -30}
+  m_AnchoredPosition: {x: -210, y: -45}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &86478726
@@ -5686,7 +5686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: -30}
+  m_AnchoredPosition: {x: -70, y: -45}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655701603
@@ -6521,7 +6521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -30}
+  m_AnchoredPosition: {x: 70, y: -45}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890475076
@@ -6650,7 +6650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210, y: -30}
+  m_AnchoredPosition: {x: 210, y: -45}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960784052
@@ -7363,9 +7363,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1000, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 60}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1254866717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7399,7 +7399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2Na + 2H\u2082O = __ + H\u2082"
+  m_Text: "CH\u2083COOC\u2082H\u2085 + 3H\u2082 -> CH\u2083COO + H+ __"
 --- !u!222 &1254866718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12504,7 +12504,7 @@ MonoBehaviour:
   order: 0
   AIType: 0
   isDead: 0
-  health: 3
+  health: 30
   enemy: {fileID: 1357374679}
   enemyHPTag: {fileID: 1124048788}
   attackTag: {fileID: 1745028452}
@@ -13038,7 +13038,7 @@ MonoBehaviour:
   order: 1
   AIType: 0
   isDead: 0
-  health: 3
+  health: 30
   enemy: {fileID: 1674018022}
   enemyHPTag: {fileID: 497935466}
   attackTag: {fileID: 1745028452}
@@ -13345,7 +13345,7 @@ MonoBehaviour:
   order: 2
   AIType: 0
   isDead: 0
-  health: 3
+  health: 30
   enemy: {fileID: 1775190544}
   enemyHPTag: {fileID: 2016951296}
   attackTag: {fileID: 1745028452}
@@ -18454,7 +18454,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 200}
+  m_SizeDelta: {x: 700, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916587731
 MonoBehaviour:
@@ -18521,7 +18521,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930838032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1140727501}

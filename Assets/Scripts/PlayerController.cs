@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static float playerHealth = 10;
-    public static float playerAttack = 0;
-    public static float playerDefence = 0;
+    public static int playerHealth = 100;
+    public static int playerAttack = 0;
+    public static int playerDefence = 0;
     public static int playerAP = 1;
     public static int playerPassedAP = 0;
 
@@ -26,15 +26,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        attackTag.text = string.Format("Att: {0}", (10*playerAttack));
-        defenceTag.text = string.Format("Def: {0}", (10*playerDefence));
+        attackTag.text = string.Format("Att: {0}", (playerAttack));
+        defenceTag.text = string.Format("Def: {0}", (playerDefence));
     }
 
     static void AttackPress()
     {
         Debug.Log("Attack!");
         playerAP--;
-        playerAttack += ChemistryController.multiplier;
+        playerAttack += 10 + ChemistryController.multiplier;
         CheckIfTurnEnds();
     }
 
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Defend!");
         playerAP--;
-        playerDefence += ChemistryController.multiplier;
+        playerDefence += 10 + ChemistryController.multiplier;
         CheckIfTurnEnds();
     }
 

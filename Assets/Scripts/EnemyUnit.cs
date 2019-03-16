@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Math;
 
 public class EnemyUnit : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class EnemyUnit : MonoBehaviour
     public int AIType;
     public bool isDead = false;
  
-    public float health = 10;
-    float attack = 0;
-    float defence = 0;
+    public int health = 10;
+    int attack = 0;
+    int defence = 0;
 
     public Transform enemy;
     public Transform enemyHPTag;
@@ -69,16 +70,16 @@ public class EnemyUnit : MonoBehaviour
         if (AIType == 0) {
             // Primitive AI: alternates full defence and full attack)
             if (hasDefended) {
-                attack = EnemyController.enemyAP;
+                attack = 10*EnemyController.enemyAP;
             } else {
-                defence = EnemyController.enemyAP;
+                defence = 10*EnemyController.enemyAP;
             }
             hasDefended = !hasDefended;
             EnemyController.enemyAP = 0;
         } else if (AIType == 1) {
             // Simple AI:
             if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
-                attack = EnemyController.enemyAP;
+                attack = 10*EnemyController.enemyAP;
                 EnemyController.enemyAP = 0;
                 return;
             }
@@ -86,17 +87,17 @@ public class EnemyUnit : MonoBehaviour
                 return;
             }
             if (PlayerController.playerDefence < EnemyController.enemyAP) {
-                attack = PlayerController.playerDefence + 1;
-                defence = EnemyController.enemyAP - (PlayerController.playerDefence + 1);
+                attack = RoundUpTo10(PlayerController.playerDefence) + 10;
+                defence = 10*EnemyController.enemyAP - attack;
                 EnemyController.enemyAP = 0;
                 return;
             }
-            defence = EnemyController.enemyAP / 2;
-            EnemyController.enemyAP = EnemyController.enemyAP - (EnemyController.enemyAP/2);
+            defence = RoundDownTo10(EnemyController.enemyAP * 10 / 2);
+            EnemyController.enemyAP -= defence / 10;
         } else if (AIType == 2) {
             // Complex AI:
-            if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
-                attack = EnemyController.enemyAP;
+            if (EnemyController.enemyAP*10 >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
+                attack = EnemyController.enemyAP*10;
                 EnemyController.enemyAP = 0;
                 return;
             }
@@ -104,26 +105,26 @@ public class EnemyUnit : MonoBehaviour
                 return;
             }
             if (EnemyController.enemyAP % 3 == 0) {
-                attack = EnemyController.enemyAP / 3;
-                defence = EnemyController.enemyAP / 3;
+                attack = EnemyController.enemyAP * 10 / 3;
+                defence = EnemyController.enemyAP * 10 / 3;
                 EnemyController.enemyAP /= 3;
                 return;
             }
             if (EnemyController.enemyAP < (PlayerController.playerAP + TurnController.turnCount + 1)) {
-                defence = (EnemyController.enemyAP / 2) + 1;
-                EnemyController.enemyAP -= (EnemyController.enemyAP / 2) + 1;
+                defence = RoundDownTo10(EnemyController.enemyAP * 10 / 2) + 10;
+                EnemyController.enemyAP -= defence / 10;
                 return;
             }
-            if (!skipConditional && EnemyController.enemyAP > PlayerController.playerDefence) {
-                attack = Mathf.Ceil(PlayerController.playerDefence) + 1f;
-                EnemyController.enemyAP -= Mathf.CeilToInt(PlayerController.playerDefence) + 1;
+            if (!skipConditional && EnemyController.enemyAP * 10 > PlayerController.playerDefence) {
+                attack = RoundUpTo10(PlayerController.playerDefence) + 10;
+                EnemyController.enemyAP -= RoundUpTo10(PlayerController.playerDefence) + 10;
                 skipConditional = true;
                 UseAP();
             }
             skipConditional = false;
             if (EnemyController.enemyAP % 2 == 0) {
-                defence = EnemyController.enemyAP / 2;
-                attack = EnemyController.enemyAP / 2;
+                defence = EnemyController.enemyAP * 10 / 2;
+                attack = EnemyController.enemyAP * 10 / 2;
                 EnemyController.enemyAP = 0;
                 return;
             }
@@ -134,9 +135,9 @@ public class EnemyUnit : MonoBehaviour
             while (EnemyController.enemyAP > 0) {
                 randomPick = Random.Range(1, 3);
                 if (randomPick == 1) {
-                    attack++;
+                    attack += 10;
                 } else if (randomPick == 2) {
-                    defence++;
+                    defence += 10;
                 } else if (randomPick == 3) {
                     APToPass++;
                 }
@@ -152,8 +153,8 @@ public class EnemyUnit : MonoBehaviour
     public Text defenceTag;
     void showChoices()
     {
-        attackTag.text = string.Format("Att: {0}", (10*attack).ToString());
-        defenceTag.text = string.Format("Def: {0}", (10*defence).ToString());
+        attackTag.text = string.Format("Att: {0}", attack.ToString());
+        defenceTag.text = string.Format("Def: {0}", defence.ToString());
     }
 
     void Shift()
