@@ -9,9 +9,9 @@ public class EnemyUnit : MonoBehaviour
     public int AIType;
     public bool isDead = false;
  
-    public int health = 10;
-    int attack = 0;
-    int defence = 0;
+    public float health = 10;
+    float attack = 0;
+    float defence = 0;
 
     public Transform enemy;
     public Transform enemyHPTag;
@@ -109,12 +109,12 @@ public class EnemyUnit : MonoBehaviour
             }
             if (EnemyController.enemyAP < (PlayerController.playerAP + TurnController.turnCount + 1)) {
                 defence = (EnemyController.enemyAP / 2) + 1;
-                EnemyController.enemyAP -= defence;
+                EnemyController.enemyAP -= (EnemyController.enemyAP / 2) + 1;
                 return;
             }
             if (!skipConditional && EnemyController.enemyAP > PlayerController.playerDefence) {
-                attack = PlayerController.playerDefence + 1;
-                EnemyController.enemyAP -= attack;
+                attack = Mathf.Ceil(PlayerController.playerDefence) + 1f;
+                EnemyController.enemyAP -= Mathf.CeilToInt(PlayerController.playerDefence) + 1;
                 skipConditional = true;
                 UseAP();
             }

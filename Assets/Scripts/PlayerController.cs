@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static int playerHealth = 10;
-    public static int playerAttack = 0;
-    public static int playerDefence = 0;
+    public static float playerHealth = 10;
+    public static float playerAttack = 0;
+    public static float playerDefence = 0;
     public static int playerAP = 1;
     public static int playerPassedAP = 0;
 

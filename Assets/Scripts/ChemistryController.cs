@@ -18,6 +18,8 @@ public class ChemistryController : MonoBehaviour
     public Text text4;
 
 
+    float multiplier = 1.0f;
+
     struct Quiz
     {
         public string formula;
@@ -92,8 +94,15 @@ public class ChemistryController : MonoBehaviour
             } else if (varIndex == 1) { // defence
                 PlayerController.playerDefence /= 2;
             }
+            multiplier = 1.0f;
         } else {
             formulaField.color = new Color(0f, 1f, 0f, 1f);
+            if (varIndex == 0) { // attack
+                PlayerController.playerAttack *= multiplier;    
+            } else if (varIndex == 1) { // defence
+                PlayerController.playerDefence *= multiplier;
+            }
+            multiplier += 0.1f;
         }
         StartCoroutine(WaitAndHide());
 

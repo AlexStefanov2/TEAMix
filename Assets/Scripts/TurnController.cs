@@ -14,10 +14,25 @@ public class TurnController : MonoBehaviour
         Debug.Log("Debug Console Active");
     }
 
+    static bool toCycleTurns = false;
+    void Update()
+    {
+        if (toCycleTurns) {
+            StartCoroutine(Waitable());
+            toCycleTurns = false;
+        }
+    }
+
     public static int stage = 0;
     public static void CycleTurns()
     {
-        Debug.Log("Activated on stage " + stage.ToString());
+        toCycleTurns = true;
+    }
+
+    public static bool hasWon;
+    public static bool hasLost;
+    IEnumerator Waitable()
+    {
         if (stage == 0) {
             isPlayerTurn = false;
             if (PlayerController.playerAttack > 0) {
@@ -28,39 +43,46 @@ public class TurnController : MonoBehaviour
         }
         if (stage == 1) {
             if (PlayerController.playerDefence > 0) {
-               ChemistryController.GiveTask(1);
+            ChemistryController.GiveTask(1);
             } else {
                 stage = 2;
             }
         }
         if (stage == 2) {
+            yield return new WaitForSeconds(0.5f);
             EnemyController.TakeDamage();
+            yield return new WaitForSeconds(0.5f);
             EnemyController.ShiftEnemies();
-            EnemyController.enemyAP += turnCount;
-            EnemyController.UseAP();
-            EnemyController.DealDamage();
+            yield return new WaitForSeconds(0.5f);
             if (EnemyController.enemyCount == 0) {
                 Debug.Log ("YOU WIN!");
                 bigLabelStatus = "YOU WIN!";
-                return;
+                hasWon = true;
+            } else {
+                EnemyController.enemyAP += turnCount;
+                yield return new WaitForSeconds(0.5f);
+                EnemyController.UseAP();
+                yield return new WaitForSeconds(0.5f);
+                EnemyController.DealDamage();
+                yield return new WaitForSeconds(0.5f);
+                if (PlayerController.playerHealth <= 0) {
+                    Debug.Log ("YOU LOSE.");
+                    bigLabelStatus = "YOU LOSE.";
+                    hasLost = true;
+                } else {
+                    turnCount++;
+                    PlayerController.playerAP += turnCount;
+                    PlayerController.playerDefence = 0;
+                    PlayerController.playerAttack = 0;
+                    DebugPrint();
+                    isPlayerTurn = true;
+                    
+                    stage = 0;
+                }
             }
-
-            if (PlayerController.playerHealth <= 0) {
-                Debug.Log ("YOU LOSE.");
-                bigLabelStatus = "YOU LOSE.";
-                return;
-            }
-            turnCount++;
-            PlayerController.playerAP += turnCount;
-            PlayerController.playerDefence = 0;
-            PlayerController.playerAttack = 0;
-            DebugPrint();
-            isPlayerTurn = true;
-            
-            stage = 0;
         }
+        yield return new WaitForSeconds(0);
     }
-
     static void DebugPrint()
     {
         PlayerController.DebugPrint();
