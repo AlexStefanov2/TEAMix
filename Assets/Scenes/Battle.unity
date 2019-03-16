@@ -112,6 +112,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &48819270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48819271}
+  - component: {fileID: 48819273}
+  - component: {fileID: 48819272}
+  m_Layer: 5
+  m_Name: EnemyDefence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &48819271
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48819270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 11988}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 851520828}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: 180}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &48819272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48819270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Def: 0'
+--- !u!222 &48819273
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48819270}
+  m_CullTransparentMesh: 0
 --- !u!1 &86478724
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512368614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.31206274, y: 2, z: -1}
+  m_LocalPosition: {x: 0.31206274, y: 2, z: -300}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 338551039}
@@ -729,7 +808,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -903,7 +982,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9811321, g: 0.23602703, b: 0.23602703, a: 1}
+      maxColor: {r: 0.5283019, g: 0.042363837, b: 0.042363837, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -964,8 +1043,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
+      minMaxState: 3
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1017,7 +1096,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1070,7 +1149,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1707,7 +1786,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 1
-      repeatInterval: 0.01
+      repeatInterval: 1.01
       probability: 1
   SizeModule:
     enabled: 0
@@ -2214,7 +2293,7 @@ ParticleSystem:
     tilesY: 8
     animationType: 0
     rowIndex: 0
-    cycles: 15
+    cycles: 5
     uvChannelMask: -1
     randomRow: 1
     sprites:
@@ -5829,6 +5908,7 @@ GameObject:
   - component: {fileID: 844991518}
   - component: {fileID: 844991517}
   - component: {fileID: 844991520}
+  - component: {fileID: 844991521}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -5912,6 +5992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96444eb4b913628438a91e541d76baea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swiper: {fileID: 844991521}
 --- !u!114 &844991514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6019,6 +6100,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c99d6fbbb9e3604582992dc83759a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &844991521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844991509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc82630ffb1b1e745a281439a8cb9650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySwipe1: {fileID: 512368617}
+  enemySwipe2: {fileID: 1266866451}
 --- !u!1 &851520824
 GameObject:
   m_ObjectHideFlags: 0
@@ -6120,6 +6215,8 @@ RectTransform:
   - {fileID: 144750901}
   - {fileID: 626591302}
   - {fileID: 1810649975}
+  - {fileID: 1745028451}
+  - {fileID: 48819271}
   m_Father: {fileID: 338551039}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7405,7 +7502,7 @@ GameObject:
   - component: {fileID: 1266866451}
   - component: {fileID: 1266866450}
   m_Layer: 0
-  m_Name: swipe
+  m_Name: swipe (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7419,7 +7516,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266866448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.31206274, y: 2, z: -1}
+  m_LocalPosition: {x: 0.31206274, y: 2, z: -300}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 338551039}
@@ -7503,7 +7600,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -7677,7 +7774,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9811321, g: 0.23602703, b: 0.23602703, a: 1}
+      maxColor: {r: 0.4716981, g: 0.02002491, b: 0.02002491, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7738,8 +7835,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
+      minMaxState: 3
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7791,7 +7888,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -7844,7 +7941,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -8004,7 +8101,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.5235988
+      scalar: -0.7853981
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -8988,7 +9085,7 @@ ParticleSystem:
     tilesY: 8
     animationType: 0
     rowIndex: 0
-    cycles: 15
+    cycles: 5
     uvChannelMask: -1
     randomRow: 1
     sprites:
@@ -12247,6 +12344,8 @@ MonoBehaviour:
   health: 3
   enemy: {fileID: 1357374679}
   enemyHPTag: {fileID: 1124048788}
+  attackTag: {fileID: 1745028452}
+  defenceTag: {fileID: 48819272}
 --- !u!1 &1487099701
 GameObject:
   m_ObjectHideFlags: 0
@@ -12779,6 +12878,8 @@ MonoBehaviour:
   health: 3
   enemy: {fileID: 1674018022}
   enemyHPTag: {fileID: 497935466}
+  attackTag: {fileID: 1745028452}
+  defenceTag: {fileID: 48819272}
 --- !u!1 &1703391308
 GameObject:
   m_ObjectHideFlags: 0
@@ -12907,6 +13008,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703391308}
   m_CullTransparentMesh: 0
+--- !u!1 &1745028450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745028451}
+  - component: {fileID: 1745028453}
+  - component: {fileID: 1745028452}
+  m_Layer: 5
+  m_Name: EnemyAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1745028451
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745028450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 11988}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 851520828}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: 210}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1745028452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745028450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Att: 0'
+--- !u!222 &1745028453
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745028450}
+  m_CullTransparentMesh: 0
 --- !u!1 &1775190542
 GameObject:
   m_ObjectHideFlags: 0
@@ -13005,6 +13185,8 @@ MonoBehaviour:
   health: 3
   enemy: {fileID: 1775190544}
   enemyHPTag: {fileID: 2016951296}
+  attackTag: {fileID: 1745028452}
+  defenceTag: {fileID: 48819272}
 --- !u!1 &1810649970
 GameObject:
   m_ObjectHideFlags: 0
@@ -13461,8 +13643,8 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 42b67e124da32164b90bae117aa716a9, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

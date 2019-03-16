@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EnemyUnit : MonoBehaviour
 {
@@ -147,9 +148,12 @@ public class EnemyUnit : MonoBehaviour
         showChoices();
     }
 
+    public Text attackTag;
+    public Text defenceTag;
     void showChoices()
     {
-        // display enemy attack and defence
+        attackTag.text = string.Format("Att: {0}", (10*attack).ToString());
+        defenceTag.text = string.Format("Def: {0}", (10*defence).ToString());
     }
 
     void Shift()
