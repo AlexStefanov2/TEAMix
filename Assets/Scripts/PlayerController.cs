@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public Button AttackButton;
     public Button DefendButton;
     public Button PassButton;
+    public Text attackTag;
+    public Text defenceTag;
 
     void Start()
     {
@@ -22,11 +24,17 @@ public class PlayerController : MonoBehaviour
          PassButton.onClick.AddListener(PassPress);
     }
 
+    void Update()
+    {
+        attackTag.text = string.Format("Att: {0}", (10*playerAttack));
+        defenceTag.text = string.Format("Def: {0}", (10*playerDefence));
+    }
+
     static void AttackPress()
     {
         Debug.Log("Attack!");
         playerAP--;
-        playerAttack++;
+        playerAttack += ChemistryController.multiplier;
         CheckIfTurnEnds();
     }
 
@@ -34,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Defend!");
         playerAP--;
-        playerDefence++;
+        playerDefence += ChemistryController.multiplier;
         CheckIfTurnEnds();
     }
 

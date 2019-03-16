@@ -18,7 +18,7 @@ public class ChemistryController : MonoBehaviour
     public Text text4;
 
 
-    float multiplier = 1.0f;
+    public static float multiplier = 1.0f;
 
     struct Quiz
     {
@@ -48,14 +48,17 @@ public class ChemistryController : MonoBehaviour
         new Quiz("H₂ + O₂ = __", "2HO", "H₂O", "H₂O₂", "HO", 3),
     };
     
-
+    bool lastShownStatus = !isShown;
     void Update()
     {
-        if (isShown) {
-            ShowTask();
-        } else {
-            HideTask();
+        if (isShown != lastShownStatus) {
+            if (isShown) {
+                ShowTask();
+            } else {
+                HideTask();
+            }
         }
+        lastShownStatus = isShown;
     }
 
     public void HideTask()
@@ -97,11 +100,6 @@ public class ChemistryController : MonoBehaviour
             multiplier = 1.0f;
         } else {
             formulaField.color = new Color(0f, 1f, 0f, 1f);
-            if (varIndex == 0) { // attack
-                PlayerController.playerAttack *= multiplier;    
-            } else if (varIndex == 1) { // defence
-                PlayerController.playerDefence *= multiplier;
-            }
             multiplier += 0.1f;
         }
         StartCoroutine(WaitAndHide());
