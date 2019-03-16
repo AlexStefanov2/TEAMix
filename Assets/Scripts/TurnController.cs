@@ -7,7 +7,7 @@ public class TurnController : MonoBehaviour
     public static string bigLabelStatus = "";
 
     public static bool isPlayerTurn = true;
-    static int turnCount = 1;
+    public static int turnCount = 1;
 
     void Start()
     {

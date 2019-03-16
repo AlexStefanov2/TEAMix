@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class EnemyUnit : MonoBehaviour
 {
     public int order;
+    public int AIType;
     public bool isDead = false;
  
     public int health = 10;
@@ -45,6 +46,7 @@ public class EnemyUnit : MonoBehaviour
     }
 
     bool hasDefended = false;
+    bool skipConditional = false;
     void UseAP()
     {
         if (order != 0) {
@@ -52,19 +54,85 @@ public class EnemyUnit : MonoBehaviour
         }
         defence = 0;
         attack = 0;
-        /* // Primitive AI (always attacks with all of its AP):
-        attack = EnemyController.enemyAP;
-        EnemyController.enemyAP = 0;
-        */
 
-        // Not So primitive AI (alternates full defence and full attack)
-        if (hasDefended) {
-            attack = EnemyController.enemyAP;
-        } else {
-            defence = EnemyController.enemyAP;
+        if (AIType == 0) {
+            // Primitive AI: alternates full defence and full attack)
+            if (hasDefended) {
+                attack = EnemyController.enemyAP;
+            } else {
+                defence = EnemyController.enemyAP;
+            }
+            hasDefended = !hasDefended;
+            EnemyController.enemyAP = 0;
+        } else if (AIType == 1) {
+            // Simple AI:
+            if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
+                attack = EnemyController.enemyAP;
+                EnemyController.enemyAP = 0;
+                return;
+            }
+            if (TurnController.turnCount <= 3) {
+                return;
+            }
+            if (PlayerController.playerDefence < EnemyController.enemyAP) {
+                attack = PlayerController.playerDefence + 1;
+                defence = EnemyController.enemyAP - (PlayerController.playerDefence + 1);
+                EnemyController.enemyAP = 0;
+                return;
+            }
+            defence = EnemyController.enemyAP / 2;
+            EnemyController.enemyAP = EnemyController.enemyAP - (EnemyController.enemyAP/2);
+        } else if (AIType == 2) {
+            // Complex AI:
+            if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
+                attack = EnemyController.enemyAP;
+                EnemyController.enemyAP = 0;
+                return;
+            }
+            if (TurnController.turnCount <= 3) {
+                return;
+            }
+            if (EnemyController.enemyAP % 3 == 0) {
+                attack = EnemyController.enemyAP / 3;
+                defence = EnemyController.enemyAP / 3;
+                EnemyController.enemyAP /= 3;
+                return;
+            }
+            if (EnemyController.enemyAP < (PlayerController.playerAP + TurnController.turnCount + 1)) {
+                defence = (EnemyController.enemyAP / 2) + 1;
+                EnemyController.enemyAP -= defence;
+                return;
+            }
+            if (!skipConditional && EnemyController.enemyAP > PlayerController.playerDefence) {
+                attack = PlayerController.playerDefence + 1;
+                EnemyController.enemyAP -= attack;
+                skipConditional = true;
+                UseAP();
+            }
+            skipConditional = false;
+            if (EnemyController.enemyAP % 2 == 0) {
+                defence = EnemyController.enemyAP / 2;
+                attack = EnemyController.enemyAP / 2;
+                EnemyController.enemyAP = 0;
+                return;
+            }
+        } else if (AIType == 3) {
+            // Random AI:
+            int randomPick;
+            int APToPass = 0;
+            while (EnemyController.enemyAP > 0) {
+                randomPick = Random.Range(1, 3);
+                if (randomPick == 1) {
+                    attack++;
+                } else if (randomPick == 2) {
+                    defence++;
+                } else if (randomPick == 3) {
+                    APToPass++;
+                }
+                EnemyController.enemyAP--;
+            }
+            EnemyController.enemyAP = APToPass;
         }
-        hasDefended = !hasDefended;
-        EnemyController.enemyAP = 0;
     }
 
     void Shift()

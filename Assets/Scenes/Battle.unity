@@ -2601,6 +2601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 0
+  AIType: 0
   isDead: 0
   health: 10
   enemy: {fileID: 1357374679}
@@ -3130,6 +3131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 1
+  AIType: 0
   isDead: 0
   health: 10
   enemy: {fileID: 1674018022}
@@ -3354,6 +3356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 2
+  AIType: 0
   isDead: 0
   health: 10
   enemy: {fileID: 1775190544}
