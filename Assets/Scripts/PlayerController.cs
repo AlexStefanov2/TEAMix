@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
     static void PassPress()
     {
         Debug.Log("Pass!");
-        playerAP--;
-        playerPassedAP++;
+        playerPassedAP = playerAP;
+        playerAP = 0;
         CheckIfTurnEnds();
     }
 
