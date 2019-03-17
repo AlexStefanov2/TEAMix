@@ -11,17 +11,20 @@ public class EnemyUnit : MonoBehaviour
     public int AIType;
     public bool isDead = false;
  
-    public int health = 10;
+    public int health = 3;
+    public int maxHealth;
     int attack = 0;
     int defence = 0;
 
     public Transform enemy;
     public Transform enemyHPTag;
+    public Transform enemyHPBar;
 
-
+    
 
     void Start()
     {
+        maxHealth = health;
         EnemyController.ToShift += Shift;
         EnemyController.ToDealDamage += DealDamage;
         EnemyController.ToTakeDamage += TakeDamage;
@@ -31,6 +34,8 @@ public class EnemyUnit : MonoBehaviour
         enemyEnd = enemyStart;
         tagStart = enemyHPTag.position;
         tagEnd = tagStart;
+        barStart = enemyHPBar.position;
+        barEnd = barStart;
     }
 
     float t = 0;
@@ -38,7 +43,10 @@ public class EnemyUnit : MonoBehaviour
     Vector2 enemyEnd;
     Vector2 tagStart;
     Vector2 tagEnd;
+    Vector2 barStart;
+    Vector2 barEnd;
     float transitionLength = 0.5f;
+
     void UpdateScreenPosition()
     {
         enemyStart = enemy.position;
@@ -47,6 +55,9 @@ public class EnemyUnit : MonoBehaviour
         tagStart = enemyHPTag.position;
         tagEnd = tagStart;
         tagEnd.y = (-2*order)+2.5f;
+        barStart = enemyHPBar.position;
+        barEnd = barStart;
+        barEnd.y = (-2*order)+1.5f;
         t = 0;
     }
 
@@ -55,6 +66,9 @@ public class EnemyUnit : MonoBehaviour
         t += Time.deltaTime / transitionLength;
         enemy.position = Vector2.Lerp(enemyStart, enemyEnd, t);
         enemyHPTag.position = Vector2.Lerp(tagStart, tagEnd, t);
+        enemyHPBar.position = Vector2.Lerp(barStart, barEnd, t);
+
+        enemyHPBar.GetComponent<HealthbarController>().percentage = (float)health / maxHealth;
     }
 
     bool hasDefended = false;
