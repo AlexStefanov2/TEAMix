@@ -46,7 +46,7 @@ public class EnemyUnit : MonoBehaviour
         enemyEnd.y = (-2*order)+2;
         tagStart = enemyHPTag.position;
         tagEnd = tagStart;
-        tagEnd.y = (-2*order)+2;
+        tagEnd.y = (-2*order)+2.5f;
         t = 0;
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public static int playerHealth = 100;
+    public static int playerMaxHealth = playerHealth;
     public static int playerAttack = 0;
     public static int playerDefence = 0;
     public static int playerAP = 1;
@@ -16,18 +17,20 @@ public class PlayerController : MonoBehaviour
     public Button PassButton;
     public Text attackTag;
     public Text defenceTag;
+    public HealthbarController healthbar;
 
     void Start()
     {
-         AttackButton.onClick.AddListener(AttackPress);
-         DefendButton.onClick.AddListener(DefendPress);
-         PassButton.onClick.AddListener(PassPress);
+        AttackButton.onClick.AddListener(AttackPress);
+        DefendButton.onClick.AddListener(DefendPress);
+        PassButton.onClick.AddListener(PassPress);
     }
 
     void Update()
     {
         attackTag.text = string.Format("Att: {0}", (playerAttack));
         defenceTag.text = string.Format("Def: {0}", (playerDefence));
+        healthbar.percentage = (float)playerHealth / playerMaxHealth;
     }
 
     static void AttackPress()
