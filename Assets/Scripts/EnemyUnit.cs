@@ -17,8 +17,11 @@ public class EnemyUnit : MonoBehaviour
     int defence = 0;
 
     public Transform enemy;
+    public HealthbarController healthbar;
+    /*
     public Transform enemyHPTag;
     public Transform enemyHPBar;
+    */
 
     
 
@@ -32,32 +35,38 @@ public class EnemyUnit : MonoBehaviour
         EnemyController.ToDebug += DebugPrint;
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
+        /* 
         tagStart = enemyHPTag.position;
         tagEnd = tagStart;
         barStart = enemyHPBar.position;
         barEnd = barStart;
+        */
     }
 
     float t = 0;
     Vector2 enemyStart;
     Vector2 enemyEnd;
+    /* 
     Vector2 tagStart;
     Vector2 tagEnd;
     Vector2 barStart;
     Vector2 barEnd;
+    */
     float transitionLength = 0.5f;
 
     void UpdateScreenPosition()
     {
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
-        enemyEnd.y = (-2*order)+2;
+        enemyEnd.y = ((-150f*order)+220f)/60f; // divide by 60 because idk why
+        /*
         tagStart = enemyHPTag.position;
         tagEnd = tagStart;
         tagEnd.y = (-2*order)+2.5f;
         barStart = enemyHPBar.position;
         barEnd = barStart;
         barEnd.y = (-2*order)+1.5f;
+         */
         t = 0;
     }
 
@@ -65,19 +74,27 @@ public class EnemyUnit : MonoBehaviour
     {
         t += Time.deltaTime / transitionLength;
         enemy.position = Vector2.Lerp(enemyStart, enemyEnd, t);
+        /* 
         enemyHPTag.position = Vector2.Lerp(tagStart, tagEnd, t);
         enemyHPBar.position = Vector2.Lerp(barStart, barEnd, t);
+        */
 
-        enemyHPBar.GetComponent<HealthbarController>().percentage = (float)health / maxHealth;
+        healthbar.percentage = (float)health / maxHealth;
     }
 
     bool hasDefended = false;
     bool skipConditional = false;
+
     void UseAP()
     {
         if (order != 0) {
             return;
         }
+        ComputeAP();
+        ShowChoices();
+    }
+    void ComputeAP()
+    {
         defence = 0;
         attack = 0;
 
@@ -159,14 +176,13 @@ public class EnemyUnit : MonoBehaviour
             }
             EnemyController.enemyAP = APToPass;
         }
-
-        showChoices();
     }
 
     public Text attackTag;
     public Text defenceTag;
-    void showChoices()
+    void ShowChoices()
     {
+        Debug.Log("ShowChoices was called.");
         TurnController.enemyHasAttacked = attack;
         TurnController.enemyHasDefended = defence;
         attackTag.text = string.Format("Att: {0}", attack.ToString());
