@@ -6,26 +6,42 @@ using UnityEngine.UI;
 
 public class MusicControl : MonoBehaviour
 {
-    public bool isMusicPlaying = true;
     public Button musicButton;
     public Sprite SpriteOriginal;
     public Sprite SpriteSwap;
-    private int i = 0;
+    public AudioMixer audioMixer;
+    public bool isMute=false;
+    int isSwitched;
     void Start()
     {
         SpriteOriginal = musicButton.GetComponent<Image>().sprite;
         musicButton.onClick.AddListener(TaskOnClick);
     }
-    // Update is called once per frame
+
     public void TaskOnClick()
     {
-        AudioListener.pause = !AudioListener.pause;
-        if (i % 2 == 0)
+        isMute = !isMute;
+        if (isMute)
         {
+            audioMixer.SetFloat("MusicVol", -80);
+            musicButton.image.overrideSprite = SpriteSwap;
+            PlayerPrefs.SetInt("IsMute", isMute ? 1 : 0);
+        }
+        else
+        {
+            audioMixer.SetFloat("MusicVol", 0);
+            musicButton.image.overrideSprite = SpriteOriginal;
+            PlayerPrefs.SetInt("IsMute", isMute ? 1 : 0);
+        }
+
+    }
+    void Update()
+    {
+        isSwitched = PlayerPrefs.GetInt("IsMute");
+        if (isSwitched == 1)
+        {
+            isMute = true;
             musicButton.image.overrideSprite = SpriteSwap;
         }
-        else musicButton.image.overrideSprite = SpriteOriginal;
-        i++;
     }
-   
 }
