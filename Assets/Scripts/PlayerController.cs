@@ -12,19 +12,9 @@ public class PlayerController : MonoBehaviour
     public static int playerAP = 1;
     public static int playerPassedAP = 0;
 
-    public Button AttackButton;
-    public Button DefendButton;
-    public Button PassButton;
     public Text attackTag;
     public Text defenceTag;
     public HealthbarController healthbar;
-
-    void Start()
-    {
-        AttackButton.onClick.AddListener(AttackPress);
-        DefendButton.onClick.AddListener(DefendPress);
-        PassButton.onClick.AddListener(PassPress);
-    }
 
     void Update()
     {
@@ -33,7 +23,7 @@ public class PlayerController : MonoBehaviour
         healthbar.percentage = (float)playerHealth / playerMaxHealth;
     }
 
-    static void AttackPress()
+    public void AttackPress()
     {
         Debug.Log("Attack!");
         playerAP--;
@@ -41,7 +31,7 @@ public class PlayerController : MonoBehaviour
         CheckIfTurnEnds();
     }
 
-    static void DefendPress()
+    public void DefendPress()
     {
         Debug.Log("Defend!");
         playerAP--;
@@ -49,7 +39,7 @@ public class PlayerController : MonoBehaviour
         CheckIfTurnEnds();
     }
 
-    static void PassPress()
+    public void PassPress()
     {
         Debug.Log("Pass!");
         playerPassedAP = playerAP;
