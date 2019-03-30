@@ -513,7 +513,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 144750903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 734657493}
+        m_MethodName: AttackPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &162631730
@@ -6186,7 +6197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512368614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -2.5, z: -263.455}
+  m_LocalPosition: {x: -1, y: -2.5, z: -263.455}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 1033709637}
@@ -11129,7 +11140,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 626591304}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 734657493}
+        m_MethodName: DefendPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &655701601
@@ -11391,9 +11413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d761999a5f7e8974f89b0b976b5d529b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackButton: {fileID: 144750905}
-  DefendButton: {fileID: 626591306}
-  PassButton: {fileID: 1810649971}
   attackTag: {fileID: 58758371}
   defenceTag: {fileID: 821295567}
   healthbar: {fileID: 1206024696}
@@ -18218,9 +18237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d761999a5f7e8974f89b0b976b5d529b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackButton: {fileID: 144750905}
-  DefendButton: {fileID: 626591306}
-  PassButton: {fileID: 1810649971}
   attackTag: {fileID: 58758371}
   defenceTag: {fileID: 821295567}
   healthbar: {fileID: 1206024696}
@@ -18824,7 +18840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266866448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -2.5, z: -263.455}
+  m_LocalPosition: {x: -1, y: -2.5, z: -263.455}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 1033709637}
@@ -24329,7 +24345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584939679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -2.5, z: -263.45496}
+  m_LocalPosition: {x: -1, y: -2.5, z: -263.45496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1033709637}
@@ -30015,7 +30031,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1810649972}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 734657493}
+        m_MethodName: PassPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1810649972
