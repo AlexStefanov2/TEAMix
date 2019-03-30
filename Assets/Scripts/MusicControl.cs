@@ -10,38 +10,32 @@ public class MusicControl : MonoBehaviour
     public Sprite SpriteOriginal;
     public Sprite SpriteSwap;
     public AudioMixer audioMixer;
-    public bool isMute=false;
-    int isSwitched;
+    bool isMute;
     void Start()
     {
+        isMute = 1==PlayerPrefs.GetInt("IsMute");
         SpriteOriginal = musicButton.GetComponent<Image>().sprite;
         musicButton.onClick.AddListener(TaskOnClick);
+        UpdateMusic();
     }
 
     public void TaskOnClick()
     {
+        
         isMute = !isMute;
-        if (isMute)
-        {
+        PlayerPrefs.SetInt("IsMute", isMute ? 1 : 0);
+        UpdateMusic();
+    }
+
+    void UpdateMusic()
+    {
+        if (isMute) {
             audioMixer.SetFloat("MusicVol", -80);
             musicButton.image.overrideSprite = SpriteSwap;
-            PlayerPrefs.SetInt("IsMute", isMute ? 1 : 0);
-        }
-        else
-        {
+        } else {
             audioMixer.SetFloat("MusicVol", 0);
             musicButton.image.overrideSprite = SpriteOriginal;
-            PlayerPrefs.SetInt("IsMute", isMute ? 1 : 0);
-        }
-
-    }
-    void Update()
-    {
-        isSwitched = PlayerPrefs.GetInt("IsMute");
-        if (isSwitched == 1)
-        {
-            isMute = true;
-            musicButton.image.overrideSprite = SpriteSwap;
+            
         }
     }
 }
