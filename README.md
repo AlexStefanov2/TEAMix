@@ -10,6 +10,6 @@
 
 ## Сваляне (за телефон)
 
-1. Свалете reaction.apk от https://github.com/AlexStefanov2/TEAMix/raw/master/reaction.apk на компютър
+1. Свалете reaction.apk от https://github.com/AlexStefanov2/TEAMix/releases на компютър
 2. Преместете файла от компютъра на телефон (с кабел или по интернет)
 3. Отворете файла на телефона и инсталирайте приложението
