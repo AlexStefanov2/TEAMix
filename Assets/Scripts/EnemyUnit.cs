@@ -56,6 +56,7 @@ public class EnemyUnit : MonoBehaviour
 
     void UpdateScreenPosition()
     {
+        if (!enemy) {return;}
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
         enemyEnd.y = ((-150f*order)+220f)/60f; // divide by 60 because idk why
@@ -182,6 +183,8 @@ public class EnemyUnit : MonoBehaviour
     public Text defenceTag;
     void ShowChoices()
     {
+        if (!attackTag) {return;}
+        if (!defenceTag) {return;}
         Debug.Log("ShowChoices was called.");
         TurnController.enemyHasAttacked = attack;
         TurnController.enemyHasDefended = defence;
