@@ -32,8 +32,9 @@ public class EnemyUnit : MonoBehaviour
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
 
+        UpdateScreenPosition();
         if (order == 0) {
-            character.Show();
+            StartCoroutine(character.Show());
         }
     }
 
@@ -46,10 +47,16 @@ public class EnemyUnit : MonoBehaviour
     void UpdateScreenPosition()
     {
         if (!enemy) {return;}
+        if (!character) {return;}
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
         enemyEnd.y = ((-150f*order)+220f)/60f; // divide by 60 because idk why
         t = 0;
+        if (order == 0) {
+            StartCoroutine(character.Show());
+        } else {
+            StartCoroutine(character.Hide());
+        }
     }
 
     void Update()
@@ -174,11 +181,6 @@ public class EnemyUnit : MonoBehaviour
         order--;
         if (order < 0) {
             order = EnemyController.enemyCount - 1;
-        }
-        if (order == 0) {
-            character.Show();
-        } else {
-            character.Hide();
         }
         UpdateScreenPosition();
     }

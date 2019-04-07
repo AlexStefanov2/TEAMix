@@ -14,6 +14,7 @@ public class EnemyCharacter : MonoBehaviour
     Vector3 start;
     Vector3 end;
 
+    bool loaded = false;
     void Start()
     {
         character = GetComponent<Transform>();
@@ -24,6 +25,7 @@ public class EnemyCharacter : MonoBehaviour
         character.position = right;
         end = right;
         start = right;
+        loaded = true;
     }
 
     public float transitionLength = 0.5f;
@@ -36,18 +38,20 @@ public class EnemyCharacter : MonoBehaviour
     }
 
     bool isShown = false;
-    public void Show()
+    public IEnumerator Show()
     {
-        if (isShown) {return;}
+        while (!loaded) {yield return null;}
+        if (isShown) {yield break;}
         start = right;
         end = center;
         t = 0;
         isShown = true;
     }
 
-    public void Hide()
+    public IEnumerator Hide()
     {
-        if (!isShown) {return;}
+        while (!loaded) {yield return null;}
+        if (!isShown) {yield break;}
         start = center;
         end = right;
         t = 0;
