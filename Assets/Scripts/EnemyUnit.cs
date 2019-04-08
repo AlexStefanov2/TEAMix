@@ -17,12 +17,8 @@ public class EnemyUnit : MonoBehaviour
     int defence = 0;
 
     public Transform enemy;
+    public EnemyCharacter character;
     public HealthbarController healthbar;
-    /*
-    public Transform enemyHPTag;
-    public Transform enemyHPBar;
-    */
-
     
 
     void Start()
@@ -35,49 +31,38 @@ public class EnemyUnit : MonoBehaviour
         EnemyController.ToDebug += DebugPrint;
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
-        /* 
-        tagStart = enemyHPTag.position;
-        tagEnd = tagStart;
-        barStart = enemyHPBar.position;
-        barEnd = barStart;
-        */
+
+        UpdateScreenPosition();
+        if (order == 0) {
+            StartCoroutine(character.Show());
+        }
     }
 
     float t = 0;
     Vector2 enemyStart;
     Vector2 enemyEnd;
-    /* 
-    Vector2 tagStart;
-    Vector2 tagEnd;
-    Vector2 barStart;
-    Vector2 barEnd;
-    */
+
     float transitionLength = 0.5f;
 
     void UpdateScreenPosition()
     {
+        if (!enemy) {return;}
+        if (!character) {return;}
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
         enemyEnd.y = ((-150f*order)+220f)/60f; // divide by 60 because idk why
-        /*
-        tagStart = enemyHPTag.position;
-        tagEnd = tagStart;
-        tagEnd.y = (-2*order)+2.5f;
-        barStart = enemyHPBar.position;
-        barEnd = barStart;
-        barEnd.y = (-2*order)+1.5f;
-         */
         t = 0;
+        if (order == 0) {
+            StartCoroutine(character.Show());
+        } else {
+            StartCoroutine(character.Hide());
+        }
     }
 
     void Update()
     {
         t += Time.deltaTime / transitionLength;
         enemy.position = Vector2.Lerp(enemyStart, enemyEnd, t);
-        /* 
-        enemyHPTag.position = Vector2.Lerp(tagStart, tagEnd, t);
-        enemyHPBar.position = Vector2.Lerp(barStart, barEnd, t);
-        */
 
         healthbar.percentage = (float)health / maxHealth;
     }
@@ -182,6 +167,8 @@ public class EnemyUnit : MonoBehaviour
     public Text defenceTag;
     void ShowChoices()
     {
+        if (!attackTag) {return;}
+        if (!defenceTag) {return;}
         Debug.Log("ShowChoices was called.");
         TurnController.enemyHasAttacked = attack;
         TurnController.enemyHasDefended = defence;
@@ -224,6 +211,7 @@ public class EnemyUnit : MonoBehaviour
     void Die()
     {
         isDead = true;
+        character.Die();
         EnemyController.enemyCount--;
         EnemyController.ToShift -= Shift;
         EnemyController.ToDealDamage -= DealDamage;
