@@ -1,22 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TurnController : MonoBehaviour
 {
-    public static string bigLabelStatus = "";
+    public static void ResetVars()
+    {
+        bigLabelStatus = "";
+        hasWon = false;
+        hasLost = false;
+        isPlayerTurn = true;
+        turnCount = 1;
+        toCycleTurns = false;
+        stage = 0;
+        toEnemySwipe = false;
+        enemyHasDefended = 0;
+        enemyHasAttacked = 0;
+    }
+    public static string bigLabelStatus;
 
-    public static bool isPlayerTurn = true;
-    public static int turnCount = 1;
+    public static bool isPlayerTurn;
+    public static int turnCount;
+
+    public Button retryButton;
 
     public EffectController swiper;
 
     void Start()
     {
+        ResetVars();
+        retryButton.gameObject.SetActive(false); 
         Debug.Log("Debug Console Active");
     }
 
-    static bool toCycleTurns = false;
+    static bool toCycleTurns;
     void Update()
     {
         if (toCycleTurns) {
@@ -25,7 +43,7 @@ public class TurnController : MonoBehaviour
         }
     }
 
-    public static int stage = 0;
+    public static int stage;
     public static void CycleTurns()
     {
         toCycleTurns = true;
@@ -33,9 +51,9 @@ public class TurnController : MonoBehaviour
 
     public static bool hasWon;
     public static bool hasLost;
-    public static bool toEnemySwipe = false;
-    public static int enemyHasAttacked = 0;
-    public static int enemyHasDefended = 0;
+    public static bool toEnemySwipe;
+    public static int enemyHasAttacked;
+    public static int enemyHasDefended;
     IEnumerator Waitable()
     {
         if (stage == 0) {
@@ -66,11 +84,12 @@ public class TurnController : MonoBehaviour
             EnemyController.TakeDamage();
             yield return new WaitForSeconds(0.5f);
             EnemyController.ShiftEnemies();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
             if (EnemyController.enemyCount == 0) {
                 Debug.Log ("YOU WIN!");
                 bigLabelStatus = "YOU WIN!";
                 hasWon = true;
+                retryButton.gameObject.SetActive(true);
             } else {
                 EnemyController.enemyAP += turnCount;
                 yield return new WaitForSeconds(0.5f);
@@ -90,8 +109,9 @@ public class TurnController : MonoBehaviour
                     Debug.Log ("YOU LOSE.");
                     bigLabelStatus = "YOU LOSE.";
                     hasLost = true;
-                
-                } else {
+                    retryButton.gameObject.SetActive(true);
+                }
+                else {
                     turnCount++;
                     PlayerController.playerAP += turnCount;
                     PlayerController.playerDefence = 0;
@@ -109,6 +129,7 @@ public class TurnController : MonoBehaviour
     {
         PlayerController.DebugPrint();
         EnemyController.DebugPrint();
+        ChemistryController.DebugPrint();
     }
 
 }

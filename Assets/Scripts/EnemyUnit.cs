@@ -8,11 +8,15 @@ using static Math;
 public class EnemyUnit : MonoBehaviour
 {
     public int order;
-    public int AIType;
+    public int AIType = 0;
     public bool isDead = false;
- 
+
+    public EffectController smoker;
+
+
     public int health = 3;
     public int maxHealth;
+    int mouseElement;
     int attack = 0;
     int defence = 0;
 
@@ -32,6 +36,17 @@ public class EnemyUnit : MonoBehaviour
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
 
+        mouseElement = ChemistryController.possibleElements[Random.Range(0, ChemistryController.possibleElements.Length-1)];
+        if (AIType == 0) {
+            AIType = Random.Range(1, 3);
+        }
+        if (order == 0) {
+            ChemistryController.currentElement = mouseElement;
+        }
+        if (order == 0) {
+            ShowChoices();
+        }
+
         UpdateScreenPosition();
         if (order == 0) {
             StartCoroutine(character.Show());
@@ -50,7 +65,7 @@ public class EnemyUnit : MonoBehaviour
         if (!character) {return;}
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
-        enemyEnd.y = ((-150f*order)+220f)/60f; // divide by 60 because idk why
+        enemyEnd.y = ((-115f*order)+240f)/60f; // divide by 60 because idk why
         t = 0;
         if (order == 0) {
             StartCoroutine(character.Show());
@@ -75,24 +90,16 @@ public class EnemyUnit : MonoBehaviour
         if (order != 0) {
             return;
         }
+        Debug.Log("UseAP was called.");
+        defence = 0;
+        attack = 0;
         ComputeAP();
         ShowChoices();
     }
     void ComputeAP()
     {
-        defence = 0;
-        attack = 0;
-
-        if (AIType == 0) {
-            // Primitive AI: alternates full defence and full attack)
-            if (hasDefended) {
-                attack = 10*EnemyController.enemyAP;
-            } else {
-                defence = 10*EnemyController.enemyAP;
-            }
-            hasDefended = !hasDefended;
-            EnemyController.enemyAP = 0;
-        } else if (AIType == 1) {
+        Debug.Log("Computing ap...");
+        if (AIType == 1) {
             // Simple AI:
             if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
                 attack = 10*EnemyController.enemyAP;
@@ -170,10 +177,12 @@ public class EnemyUnit : MonoBehaviour
         if (!attackTag) {return;}
         if (!defenceTag) {return;}
         Debug.Log("ShowChoices was called.");
+        Debug.Log("Enemy attack: " + attack.ToString());
+        Debug.Log("Enemy defence: " + defence.ToString());
         TurnController.enemyHasAttacked = attack;
         TurnController.enemyHasDefended = defence;
-        attackTag.text = string.Format("Att: {0}", attack.ToString());
-        defenceTag.text = string.Format("Def: {0}", defence.ToString());
+        attackTag.text = attack.ToString();
+        defenceTag.text = defence.ToString();
     }
 
     void Shift()
@@ -181,6 +190,9 @@ public class EnemyUnit : MonoBehaviour
         order--;
         if (order < 0) {
             order = EnemyController.enemyCount - 1;
+        }
+        if (order == 0) {
+            ChemistryController.currentElement = mouseElement;
         }
         UpdateScreenPosition();
     }
@@ -190,6 +202,7 @@ public class EnemyUnit : MonoBehaviour
         if (order != 0) {
             return;
         }
+        Debug.Log(string.Format("Enemy will deal {0} damage!", attack));
         if (attack > PlayerController.playerDefence) {
             PlayerController.playerHealth -= (attack - PlayerController.playerDefence);
         }
@@ -208,16 +221,31 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator Dying()
     {
-        isDead = true;
-        character.Die();
-        EnemyController.enemyCount--;
+        smoker.EnableDeathSmoke();
+        yield return new WaitForSeconds(1.5f);
+    }
+
+    void OnDestroy()
+    {
+        Unsubscribe();
+    }
+    void Unsubscribe()
+    {
         EnemyController.ToShift -= Shift;
         EnemyController.ToDealDamage -= DealDamage;
         EnemyController.ToTakeDamage -= TakeDamage;
         EnemyController.ToUseAP -= UseAP;
         EnemyController.ToDebug -= DebugPrint;
+    }
+    void Die()
+    {
+        isDead = true;
+        StartCoroutine(Dying());
+        character.Die();
+        EnemyController.enemyCount--;
+        Unsubscribe();
         order = -9;
         UpdateScreenPosition();
     }
