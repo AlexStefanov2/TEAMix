@@ -13,6 +13,9 @@ public class EnemyUnit : MonoBehaviour
  
     public int health = 3;
     public int maxHealth;
+    public int mouseElement1 = Random.Range(0, 4);
+    public int mouseElement2 = Random.Range(0, 4);
+    public int mouseElement3 = Random.Range(0, 4);
     int attack = 0;
     int defence = 0;
 
