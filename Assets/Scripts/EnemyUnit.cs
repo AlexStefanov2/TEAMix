@@ -10,7 +10,10 @@ public class EnemyUnit : MonoBehaviour
     public int order;
     public int AIType;
     public bool isDead = false;
- 
+
+    public EffectController smoker;
+
+
     public int health = 3;
     public int maxHealth;
     int mouseElement;
@@ -217,9 +220,17 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
+    IEnumerator Dying()
+    {
+        smoker.EnableDeathSmoke();
+        yield return new WaitForSeconds(1.5f);
+    }
+
+
     void Die()
     {
         isDead = true;
+        StartCoroutine(Dying());
         character.Die();
         EnemyController.enemyCount--;
         EnemyController.ToShift -= Shift;

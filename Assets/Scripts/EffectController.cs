@@ -10,6 +10,7 @@ public class EffectController : MonoBehaviour
     public ParticleSystem leftSwipe2;
     public ParticleSystem rightShield;
     public ParticleSystem leftShield;
+    public ParticleSystem DeathSmoke;
 
     public void EnableRightSwipe()
     {
@@ -38,5 +39,9 @@ public class EffectController : MonoBehaviour
     public void EnableLeftShield()
     {
         leftShield.Play();
+    }
+    public void EnableDeathSmoke()
+    {
+        DeathSmoke.Play();
     }
 }

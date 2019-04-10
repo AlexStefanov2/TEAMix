@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TurnController : MonoBehaviour
@@ -9,10 +10,13 @@ public class TurnController : MonoBehaviour
     public static bool isPlayerTurn = true;
     public static int turnCount = 1;
 
+    public Button retryButton;
+
     public EffectController swiper;
 
     void Start()
     {
+        retryButton.gameObject.SetActive(false); 
         Debug.Log("Debug Console Active");
     }
 
@@ -71,6 +75,7 @@ public class TurnController : MonoBehaviour
                 Debug.Log ("YOU WIN!");
                 bigLabelStatus = "YOU WIN!";
                 hasWon = true;
+                retryButton.gameObject.SetActive(true);
             } else {
                 EnemyController.enemyAP += turnCount;
                 yield return new WaitForSeconds(0.5f);
@@ -90,8 +95,9 @@ public class TurnController : MonoBehaviour
                     Debug.Log ("YOU LOSE.");
                     bigLabelStatus = "YOU LOSE.";
                     hasLost = true;
-                
-                } else {
+                    retryButton.gameObject.SetActive(true);
+                }
+                else {
                     turnCount++;
                     PlayerController.playerAP += turnCount;
                     PlayerController.playerDefence = 0;
