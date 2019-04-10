@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        attackTag.text = string.Format("Att: {0}", (playerAttack));
-        defenceTag.text = string.Format("Def: {0}", (playerDefence));
+        attackTag.text = playerAttack.ToString();
+        defenceTag.text = playerDefence.ToString();
         healthbar.percentage = (float)playerHealth / playerMaxHealth;
     }
 

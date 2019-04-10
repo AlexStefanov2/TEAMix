@@ -53,7 +53,7 @@ public class EnemyUnit : MonoBehaviour
         if (!character) {return;}
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
-        enemyEnd.y = ((-150f*order)+220f)/60f; // divide by 60 because idk why
+        enemyEnd.y = ((-115f*order)+240f)/60f; // divide by 60 because idk why
         t = 0;
         if (order == 0) {
             StartCoroutine(character.Show());
@@ -175,8 +175,8 @@ public class EnemyUnit : MonoBehaviour
         Debug.Log("ShowChoices was called.");
         TurnController.enemyHasAttacked = attack;
         TurnController.enemyHasDefended = defence;
-        attackTag.text = string.Format("Att: {0}", attack.ToString());
-        defenceTag.text = string.Format("Def: {0}", defence.ToString());
+        attackTag.text = attack.ToString();
+        defenceTag.text = defence.ToString();
     }
 
     void Shift()
