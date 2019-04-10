@@ -8,7 +8,7 @@ using static Math;
 public class EnemyUnit : MonoBehaviour
 {
     public int order;
-    public int AIType;
+    public int AIType = 0;
     public bool isDead = false;
 
     public EffectController smoker;
@@ -37,8 +37,14 @@ public class EnemyUnit : MonoBehaviour
         enemyEnd = enemyStart;
 
         mouseElement = ChemistryController.possibleElements[Random.Range(0, ChemistryController.possibleElements.Length-1)];
+        if (AIType == 0) {
+            AIType = Random.Range(1, 3);
+        }
         if (order == 0) {
             ChemistryController.currentElement = mouseElement;
+        }
+        if (order == 0) {
+            ShowChoices();
         }
 
         UpdateScreenPosition();
@@ -84,24 +90,16 @@ public class EnemyUnit : MonoBehaviour
         if (order != 0) {
             return;
         }
+        Debug.Log("UseAP was called.");
+        defence = 0;
+        attack = 0;
         ComputeAP();
         ShowChoices();
     }
     void ComputeAP()
     {
-        defence = 0;
-        attack = 0;
-
-        if (AIType == 0) {
-            // Primitive AI: alternates full defence and full attack)
-            if (hasDefended) {
-                attack = 10*EnemyController.enemyAP;
-            } else {
-                defence = 10*EnemyController.enemyAP;
-            }
-            hasDefended = !hasDefended;
-            EnemyController.enemyAP = 0;
-        } else if (AIType == 1) {
+        Debug.Log("Computing ap...");
+        if (AIType == 1) {
             // Simple AI:
             if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
                 attack = 10*EnemyController.enemyAP;
@@ -179,6 +177,8 @@ public class EnemyUnit : MonoBehaviour
         if (!attackTag) {return;}
         if (!defenceTag) {return;}
         Debug.Log("ShowChoices was called.");
+        Debug.Log("Enemy attack: " + attack.ToString());
+        Debug.Log("Enemy defence: " + defence.ToString());
         TurnController.enemyHasAttacked = attack;
         TurnController.enemyHasDefended = defence;
         attackTag.text = attack.ToString();
@@ -202,6 +202,7 @@ public class EnemyUnit : MonoBehaviour
         if (order != 0) {
             return;
         }
+        Debug.Log(string.Format("Enemy will deal {0} damage!", attack));
         if (attack > PlayerController.playerDefence) {
             PlayerController.playerHealth -= (attack - PlayerController.playerDefence);
         }
@@ -226,18 +227,25 @@ public class EnemyUnit : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
     }
 
-
+    void OnDestroy()
+    {
+        Unsubscribe();
+    }
+    void Unsubscribe()
+    {
+        EnemyController.ToShift -= Shift;
+        EnemyController.ToDealDamage -= DealDamage;
+        EnemyController.ToTakeDamage -= TakeDamage;
+        EnemyController.ToUseAP -= UseAP;
+        EnemyController.ToDebug -= DebugPrint;
+    }
     void Die()
     {
         isDead = true;
         StartCoroutine(Dying());
         character.Die();
         EnemyController.enemyCount--;
-        EnemyController.ToShift -= Shift;
-        EnemyController.ToDealDamage -= DealDamage;
-        EnemyController.ToTakeDamage -= TakeDamage;
-        EnemyController.ToUseAP -= UseAP;
-        EnemyController.ToDebug -= DebugPrint;
+        Unsubscribe();
         order = -9;
         UpdateScreenPosition();
     }

@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public static int enemyCount = 3;
-    public static int enemyAP = 0;
+    public static void ResetVars()
+    {
+        enemyCount = 3;
+        enemyAP = 0;
+    }
+    void Start()
+    {
+        ResetVars();
+    }
+    
+    public static int enemyCount;
+    public static int enemyAP;
 
     public delegate void ShiftAction();
     public static event ShiftAction ToShift;

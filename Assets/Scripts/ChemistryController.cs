@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class ChemistryController : MonoBehaviour
 {
+
+    public static void ResetVars()
+    {
+        multiplier = 0;
+        isShown = false;
+    }
     public Image background;
     public Text formulaField;
     public Button button1;
@@ -18,7 +24,7 @@ public class ChemistryController : MonoBehaviour
     public Text text4;
 
 
-    public static int multiplier = 0;
+    public static int multiplier;
 
     public struct Quiz
     {
@@ -39,29 +45,8 @@ public class ChemistryController : MonoBehaviour
             this.correctAnswer = correctAnswer;
         }
     }
-    /*
-    EASY
 
-    new Quiz("__ + O₂ -> 2H₂O", "H₂", "2H", "2H₂", "4H", 3),
-    new Quiz("2Na + Cl₂ -> __", "2NaCl", "NaCl", "Na₂Cl₂", "2Na₂Cl", 1),
-    new Quiz("2Na + 2H₂O -> __ + H₂", "NaOH", "2NaOH", "2NaO", "H₂O", 2),
-    new Quiz("__ + O₂ -> 2Na₂O", "Na", "2Na", "3Na", "4Na", 4),
-    new Quiz("H₂ + F₂ -> __", "HF", "2HF", "H₂F₂", "F₂H₂", 2),
-    new Quiz("H₂ + O₂ -> __", "2HO", "H₂O", "H₂O₂", "HO", 3),
-    new Quiz("N₂ + 3H₂ -> __", "6H + 2N", "2NH₃", "H₂N₂", "6HN", 2),
-
-    HARD
-
-    new Quiz("2H₂S + SO₂ -> 3S+ __", "2HO", "2H₂O", "H₂O₂", "4H + 2O", 2),
-    new Quiz("CH₃COOC₂H₅ + 3H₂ -> CH₃COO + H+ __", "6H + 2N + 3O", "2NH₃", "C₂H₅OH", "6HCOO", 3),
-    new Quiz("2Mg + O₂ -> __", "2MG + 2O", "MgO", "Mg₂O₂", "2MgO", 4),
-    new Quiz("H₂SO₄ -> 2H + __", "SO₄", "S + O₄", "S2O₂", "2SO", 1),
-    new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Ag", "Ag + Cl", "AgCl", "Cl", 3),
-    new Quiz("Ca(OH)₃ -> Al + __", "3OH", "3(OH)", "3O + 3H", "COH", 2),
-    new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
-    */
-
-    /*
+    /* OLD DATABASE
     static Quiz[] databaseEasy = {
         new Quiz("__ + O₂ -> 2H₂O", "H₂", "2H", "2H₂", "4H", 3),
         new Quiz("2Na + Cl₂ -> __", "2NaCl", "NaCl", "Na₂Cl₂", "2Na₂Cl", 1),
@@ -86,6 +71,7 @@ public class ChemistryController : MonoBehaviour
     public static Quiz[][] reactionDatabase = new Quiz[119][];
     void Start()
     {
+        ResetVars();
         reactionDatabase[11] = new Quiz[] {
             new Quiz("2Na + O₂ → 2___O₂", "Na₂", "Na₄", "CO₃", "O", 1), 
             new Quiz("2Na + 2____ → 2NaOH + H", "H₂O", "H", "Na", "OH", 1), 
@@ -196,10 +182,10 @@ public class ChemistryController : MonoBehaviour
         } while (element_count < 5);
         element_count = 1;
     }*/
-    public static bool isShown = false;
+    public static bool isShown;
     static Quiz chosenQuiz;
     static int varIndex;
-    public static int currentElement = 11;
+    public static int currentElement;
     public static void GiveTask(int var)
     {
         varIndex = var;

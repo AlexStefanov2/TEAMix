@@ -5,12 +5,26 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static int playerHealth = 100;
-    public static int playerMaxHealth = playerHealth;
-    public static int playerAttack = 0;
-    public static int playerDefence = 0;
-    public static int playerAP = 1;
-    public static int playerPassedAP = 0;
+    public static void ResetVars()
+    {
+        playerHealth = 100;
+        playerMaxHealth = playerHealth;
+        playerAttack = 0;
+        playerDefence = 0;
+        playerAP = 1;
+        playerPassedAP = 0;
+    }
+    void Start()
+    {
+        ResetVars();
+    }
+    
+    public static int playerHealth;
+    public static int playerMaxHealth;
+    public static int playerAttack;
+    public static int playerDefence;
+    public static int playerAP;
+    public static int playerPassedAP;
 
     public Text attackTag;
     public Text defenceTag;
