@@ -60,7 +60,9 @@ public class ChemistryController : MonoBehaviour
     new Quiz("Ca(OH)₃ -> Al + __", "3OH", "3(OH)", "3O + 3H", "COH", 2),
     new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
     */
-    /*static Quiz[] databaseEasy = {
+
+    /*
+    static Quiz[] databaseEasy = {
         new Quiz("__ + O₂ -> 2H₂O", "H₂", "2H", "2H₂", "4H", 3),
         new Quiz("2Na + Cl₂ -> __", "2NaCl", "NaCl", "Na₂Cl₂", "2Na₂Cl", 1),
         new Quiz("2Na + 2H₂O -> __ + H₂", "NaOH", "2NaOH", "2NaO", "H₂O", 2),
@@ -77,10 +79,37 @@ public class ChemistryController : MonoBehaviour
         new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Ag", "Ag + Cl", "AgCl", "Cl", 3),
         new Quiz("Al(OH)₃ -> Al + __", "3OH", "3(OH)", "3O + 3H", "COH", 2),
         new Quiz("NaCl + AgNO₃ -> NaNO₃ + __", "Cl", "Ag", "Ag + Cl", "AgCl", 4),
-    };*/
+    };
+    */
 
+    public static int[] possibleElements = new int[] {11, 26, 27, 56};
+    public static Quiz[][] reactionDatabase = new Quiz[119][];
     void Start()
     {
+        reactionDatabase[11] = new Quiz[] {
+            new Quiz("2Na + O₂ → 2___O₂", "Na₂", "Na₄", "CO₃", "O", 1), 
+            new Quiz("2Na + 2____ → 2NaOH + H", "H₂O", "H", "Na", "OH", 1), 
+            new Quiz("2Na + Cl₂ → _____", "NaOH", "2NaCl", "NaO₂", "Cl₂", 2), 
+            new Quiz("2Na + ____ → NaBr", "2Br", "BrO₂", "Br₂", "AlBr₃", 2)
+        };
+        reactionDatabase[26] = new Quiz[4] {
+            new Quiz("4Fe + ____ → 2Fe₂O₃", "O₆", "2O₃", "O₂", "3O₂", 4),
+            new Quiz("____ + 3F₂ → 2FeF₃", "Fe", "Fe₂", "2Fe", "F₃", 3), 
+            new Quiz("2Fe + 3Cl2 → ____", "2FeCl₃", "FeCl", "2FeCl", "6FeCl", 1), 
+            new Quiz("2Fe + ____ → 2FeBr3 ", "Br₂", "FeBr", "3Br₂", "2FeBr", 3)
+        };
+        reactionDatabase[27] = new Quiz[4] {
+            new Quiz("3Co + 4O₂ → ____", "Co₂O₂", "CoO₂", "Co₂ + O₂", "2Co₂O₂", 4), 
+            new Quiz("2Co + ____ → 2CoO", "O", "H₂O", "O₂", "2O", 3), 
+            new Quiz("____ + Br₂ → CoBr₂", "2Co", "CoBr", "Co₂", "Co", 4), 
+            new Quiz("Co + ____ → CoCl₂", "Cl", "HCl", "NaCl", "Cl₂", 4)
+        };
+        reactionDatabase[56] = new Quiz[4] {
+            new Quiz("2Ba + O₂ → ____", "Ba₂O₂", "Ba₂ + O₂", "BaO", "2BaO", 4), 
+            new Quiz("Ba + O₂ → ____", "BaO₂", "2BaO", "BaO", "Ba₂O₂", 1), 
+            new Quiz("____ + N₂ → Ba3N₂", "Ba", "Ba₃", "3Ba", "3Ba₂", 3), 
+            new Quiz("Ba + 2H2O → ____", "2BaH₂O", "BaOH", "Ba(OH)₂ + H₂", "BaOH + 2H₂", 3)
+        };
     }
 
     bool lastShownStatus = !isShown;
@@ -149,17 +178,6 @@ public class ChemistryController : MonoBehaviour
         TurnController.CycleTurns();
     }
 
-    public static bool isShown = false;
-    static Quiz chosenQuiz;
-    private static int element_count = 1;
-    static int varIndex;
-    public int[] elementArray = new int[118];
-    public Quiz[,] reactionDatabase = {
-        {new Quiz("2Na + O₂ → 2___O₂", "Na₂", "Na₄", "CO₃", "O", 1), new Quiz("2Na + 2____ → 2NaOH + H", "H₂NO", "H", "Na", "OH", 1), new Quiz("2Na + Cl₂ → _____", "NaOH", "2NaCl", "NaO₂", "Cl₂", 2), new Quiz("2Na + ____ → NaBr", "2Br", "BrO₂", "Br₂", "AlBr₃", 2)},
-        {new Quiz("4Fe + ____ → 2Fe₂O₃", "O₆", "2O₃", "O₂", "3O₂", 4), new Quiz("____ + 3F₂ → 2FeF₃", "Fe", "Fe₂", "2Fe", "F₃", 3), new Quiz("2Fe + 3Cl2 → ____", "2FeCl₃", "FeCl", "2FeCl", "6FeCl", 1), new Quiz("2Fe + ____ → 2FeBr3 ", "Br₂", "FeBr", "3Br₂", "2FeBr", 3)},
-        {new Quiz("3Co + 4O₂ → ____", "Co₂O₂", "CoO₂", "Co₂ + O₂", "2Co₂O₂", 4), new Quiz("2Co + ____ → 2CoO", "O", "H₂O", "O₂", "2O", 3), new Quiz("____ + Br₂ → CoBr₂", "2Co", "CoBr", "Co₂", "Co", 4), new Quiz("Co + ____ → CoCl₂", "Cl", "HCl", "NaCl", "Cl₂", 4)},
-        {new Quiz("2Ba + O₂ → ____", "Ba₂O₂", "Ba₂ + O₂", "BaO", "2BaO", 4), new Quiz("Ba + O₂ → ____", "BaO₂", "2BaO", "BaO", "Ba₂O₂", 1), new Quiz("____ + N₂ → Ba3N₂", "Ba", "Ba₃", "3Ba", "3Ba₂", 3), new Quiz("Ba + 2H2O → ____", "2BaH₂O", "BaOH", "Ba(OH)₂ + H₂", "BaOH + 2H₂", 3)}
-    };
     //EnemyUnit: Random mouseElement = new Random();
     /*
      Element 1 - Na (Sodium)
@@ -178,20 +196,22 @@ public class ChemistryController : MonoBehaviour
         } while (element_count < 5);
         element_count = 1;
     }*/
+    public static bool isShown = false;
+    static Quiz chosenQuiz;
+    static int varIndex;
+    public static int currentElement = 11;
     public static void GiveTask(int var)
     {
         varIndex = var;
         isShown = true;
-        int percent = Random.Range(0, 9);
-        while(element_count-1<5)
-        {
-            //work on how the heck to access the enemyUnit variable
-             if (EnemyUnit.mouseElement1==element_count || EnemyUnit.mouseElement2==element_count || EnemyUnit.mouseElement3==element_count){
-                 chosenQuiz = reactionDatabase[element_count, Random.Range(0, 4)];
-             } else {
-                element_count++;
-             }
-        }
+
+        Quiz[] chosenArray = reactionDatabase[currentElement];
+        chosenQuiz = chosenArray[Random.Range(0, chosenArray.Length-1)];
+    }
+
+    public static void DebugPrint()
+    {
+        Debug.Log("Current element: " + currentElement.ToString());
     }
 }
 

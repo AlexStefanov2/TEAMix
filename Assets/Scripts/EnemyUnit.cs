@@ -13,9 +13,7 @@ public class EnemyUnit : MonoBehaviour
  
     public int health = 3;
     public int maxHealth;
-    public int mouseElement1 = Random.Range(0, 4);
-    public int mouseElement2 = Random.Range(0, 4);
-    public int mouseElement3 = Random.Range(0, 4);
+    int mouseElement;
     int attack = 0;
     int defence = 0;
 
@@ -34,6 +32,11 @@ public class EnemyUnit : MonoBehaviour
         EnemyController.ToDebug += DebugPrint;
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
+
+        mouseElement = ChemistryController.possibleElements[Random.Range(0, ChemistryController.possibleElements.Length-1)];
+        if (order == 0) {
+            ChemistryController.currentElement = mouseElement;
+        }
 
         UpdateScreenPosition();
         if (order == 0) {
@@ -184,6 +187,9 @@ public class EnemyUnit : MonoBehaviour
         order--;
         if (order < 0) {
             order = EnemyController.enemyCount - 1;
+        }
+        if (order == 0) {
+            ChemistryController.currentElement = mouseElement;
         }
         UpdateScreenPosition();
     }

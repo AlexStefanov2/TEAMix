@@ -109,6 +109,7 @@ public class TurnController : MonoBehaviour
     {
         PlayerController.DebugPrint();
         EnemyController.DebugPrint();
+        ChemistryController.DebugPrint();
     }
 
 }
