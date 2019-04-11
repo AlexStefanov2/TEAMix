@@ -82,7 +82,7 @@ public class EnemyUnit : MonoBehaviour
         healthbar.percentage = (float)health / maxHealth;
     }
 
-    bool hasDefended = false;
+   // bool hasDefended = false;
     bool skipConditional = false;
 
     void UseAP()
