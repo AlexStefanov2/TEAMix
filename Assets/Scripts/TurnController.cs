@@ -23,6 +23,8 @@ public class TurnController : MonoBehaviour
     public static bool isPlayerTurn;
     public static int turnCount;
 
+    public GameObject menuPanel;
+
     public Button retryButton;
 
     public EffectController swiper;
@@ -30,7 +32,8 @@ public class TurnController : MonoBehaviour
     void Start()
     {
         ResetVars();
-        retryButton.gameObject.SetActive(false); 
+        retryButton.gameObject.SetActive(false);
+        menuPanel.gameObject.SetActive(false);
         Debug.Log("Debug Console Active");
     }
 
@@ -89,6 +92,7 @@ public class TurnController : MonoBehaviour
                 Debug.Log ("YOU WIN!");
                 bigLabelStatus = "YOU WIN!";
                 hasWon = true;
+                menuPanel.gameObject.SetActive(true);
                 retryButton.gameObject.SetActive(true);
             } else {
                 EnemyController.enemyAP += turnCount;
@@ -109,6 +113,7 @@ public class TurnController : MonoBehaviour
                     Debug.Log ("YOU LOSE.");
                     bigLabelStatus = "YOU LOSE.";
                     hasLost = true;
+                    menuPanel.gameObject.SetActive(false);
                     retryButton.gameObject.SetActive(true);
                 }
                 else {
