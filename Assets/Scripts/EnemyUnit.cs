@@ -16,13 +16,14 @@ public class EnemyUnit : MonoBehaviour
 
     public int health = 3;
     public int maxHealth;
-    int mouseElement;
+    public int mouseElement = 0;
     int attack = 0;
     int defence = 0;
 
     public Transform enemy;
     public EnemyCharacter character;
     public HealthbarController healthbar;
+    public Text elementStat;
     
 
     void Start()
@@ -36,7 +37,9 @@ public class EnemyUnit : MonoBehaviour
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
 
-        mouseElement = ChemistryController.possibleElements[Random.Range(0, ChemistryController.possibleElements.Length-1)];
+        if (mouseElement == 0) {
+            mouseElement = ChemistryController.possibleElements[Random.Range(0, ChemistryController.possibleElements.Length-1)];
+        }
         if (AIType == 0) {
             AIType = Random.Range(1, 3);
         }
@@ -80,9 +83,9 @@ public class EnemyUnit : MonoBehaviour
         enemy.position = Vector2.Lerp(enemyStart, enemyEnd, t);
 
         healthbar.percentage = (float)health / maxHealth;
+        elementStat.text = ChemistryController.elementNames[mouseElement];
     }
 
-    bool hasDefended = false;
     bool skipConditional = false;
 
     void UseAP()
