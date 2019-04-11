@@ -65,7 +65,7 @@ public class EnemyUnit : MonoBehaviour
         if (!character) {return;}
         enemyStart = enemy.position;
         enemyEnd = enemyStart;
-        enemyEnd.y = ((-115f*order)+240f)/60f; // divide by 60 because idk why
+        enemyEnd.y = ((-115f*order)+240f)/55.18766666666667f;
         t = 0;
         if (order == 0) {
             StartCoroutine(character.Show());
@@ -82,7 +82,7 @@ public class EnemyUnit : MonoBehaviour
         healthbar.percentage = (float)health / maxHealth;
     }
 
-   // bool hasDefended = false;
+    bool hasDefended = false;
     bool skipConditional = false;
 
     void UseAP()
