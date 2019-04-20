@@ -104,7 +104,7 @@ public class EnemyUnit : MonoBehaviour
         Debug.Log("Computing ap...");
         if (AIType == 1) {
             // Simple AI:
-            if (EnemyController.enemyAP >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
+            if (EnemyController.enemyAP*10 >= (PlayerController.playerHealth + PlayerController.playerDefence)) {
                 attack = 10*EnemyController.enemyAP;
                 EnemyController.enemyAP = 0;
                 return;
